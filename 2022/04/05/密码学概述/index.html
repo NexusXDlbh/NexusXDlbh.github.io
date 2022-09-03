@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"nexuslbh.top","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="基础概念建议用python，JAVA不是很喜欢 古典密码学目的：保护信息 ·替换法：使用固定信息将原文替换为密文 加密方式：单表替换，多表替换 单表替换：原文和密文使用同一张表；  多表替换：非常复杂，多张表原文、密文进行对比。 多表替换举例： 表单1：abcde-swtrp 表单2：abcde-chfhk  明文：bee    密钥：221  密文：hkp ·移位法：按照字母移动 凯撒加密 古">
+<meta property="og:type" content="article">
+<meta property="og:title" content="密码学概述">
+<meta property="og:url" content="http://nexuslbh.top/2022/04/05/%E5%AF%86%E7%A0%81%E5%AD%A6%E6%A6%82%E8%BF%B0/index.html">
+<meta property="og:site_name" content="Meta Field">
+<meta property="og:description" content="基础概念建议用python，JAVA不是很喜欢 古典密码学目的：保护信息 ·替换法：使用固定信息将原文替换为密文 加密方式：单表替换，多表替换 单表替换：原文和密文使用同一张表；  多表替换：非常复杂，多张表原文、密文进行对比。 多表替换举例： 表单1：abcde-swtrp 表单2：abcde-chfhk  明文：bee    密钥：221  密文：hkp ·移位法：按照字母移动 凯撒加密 古">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-04-05T10:22:10.000Z">
+<meta property="article:modified_time" content="2022-08-28T12:56:25.466Z">
+<meta property="article:author" content="NexusXDUlbh">
+<meta property="article:tag" content="SEC">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://nexuslbh.top/2022/04/05/%E5%AF%86%E7%A0%81%E5%AD%A6%E6%A6%82%E8%BF%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>密码学概述 | Meta Field</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/clicklove.js"></script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+    <a target="_blank" rel="noopener" href="https://github.com/NexusXDlbh" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#70B7FD; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Meta Field</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Light</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/NexusXDlbh" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://nexuslbh.top/2022/04/05/%E5%AF%86%E7%A0%81%E5%AD%A6%E6%A6%82%E8%BF%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/arch.png">
+      <meta itemprop="name" content="NexusXDUlbh">
+      <meta itemprop="description" content="<font color="#FFFFFF">日拱一卒 功不唐捐</font>">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Meta Field">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          密码学概述
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-04-05 18:22:10" itemprop="dateCreated datePublished" datetime="2022-04-05T18:22:10+08:00">2022-04-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-08-28 20:56:25" itemprop="dateModified" datetime="2022-08-28T20:56:25+08:00">2022-08-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2022/04/05/%E5%AF%86%E7%A0%81%E5%AD%A6%E6%A6%82%E8%BF%B0/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/04/05/%E5%AF%86%E7%A0%81%E5%AD%A6%E6%A6%82%E8%BF%B0/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <span id="more"></span>
+<h2 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h2><p>建议用python，JAVA不是很喜欢</p>
+<h3 id="古典密码学"><a href="#古典密码学" class="headerlink" title="古典密码学"></a>古典密码学</h3><p>目的：保护信息</p>
+<p><strong>·替换法</strong>：使用固定信息将原文替换为密文</p>
+<p>加密方式：单表替换，多表替换</p>
+<pre><code>单表替换：原文和密文使用同一张表；
+
+多表替换：非常复杂，多张表原文、密文进行对比。
+</code></pre><p>多表替换举例：</p>
+<pre><code>表单1：abcde-swtrp 表单2：abcde-chfhk
+
+明文：bee    密钥：221
+
+密文：hkp
+</code></pre><p><strong>·移位法</strong>：按照字母移动</p>
+<p>凯撒加密</p>
+<p><strong>古典密码学破解</strong>：</p>
+<p>频率分析法：概率论——研究字母或字母组合在密文中出现的频率。E出现频率最高，X出现频率最低：“ETAOIN SHRDLU”</p>
+<h3 id="近代密码学"><a href="#近代密码学" class="headerlink" title="近代密码学"></a>近代密码学</h3><p>eg：恩尼格玛密码机 核心 ： 移位法、替换法</p>
+<p>后来被——图灵破解了（电影：《模仿游戏》</p>
+<h3 id="现代密码学"><a href="#现代密码学" class="headerlink" title="现代密码学"></a>现代密码学</h3><p>1.散列函数（Hash函数）</p>
+<p>eg：MD5,SHA-1,SHA-256</p>
+<p>2.对称加密</p>
+<p><strong>加密解密同一把密钥</strong></p>
+<p>流加密，块加密<br>3.非对称加密</p>
+<p><strong>两把密钥，公约加密，私钥解密  或 私钥加密，公钥解密</strong></p>
+<p><strong>?? 怎样设置密码才安全 ??</strong></p>
+<pre><code>·   密码不要常见；
+·   密码不要设置为同一个，“撞库”；
+·   设置特殊标记
+</code></pre><h3 id="ASCII编码"><a href="#ASCII编码" class="headerlink" title="ASCII编码"></a>ASCII编码</h3><p>American Standard Code for Information Interchange</p>
+<p><strong>代码实现凯撒加密解密</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">public class KaiSaEn &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        String input = &quot;Hello World ! &quot; ;</span><br><span class="line">        //原文右移动3位</span><br><span class="line">        int key = 3 ;</span><br><span class="line">        String s = encryptKaisa(input);</span><br><span class="line">        System.out.println(&quot;加密==&quot;+s);</span><br><span class="line">        String ans = decryptKaisa(s,key);</span><br><span class="line">        System.out.println(&quot;解密==&quot;+ans);</span><br><span class="line">    &#125;</span><br><span class="line">    //解密</span><br><span class="line">    private  static  String decryptKaisa(String s , int key)&#123;</span><br><span class="line">        char[] chars =  s.toCharArray() ;</span><br><span class="line">        StringBuilder sb = new StringBuilder() ;</span><br><span class="line">        for (char aChar : chars) &#123;</span><br><span class="line">            int b = aChar ;</span><br><span class="line">            //偏移数据</span><br><span class="line">            b -= key ;</span><br><span class="line">            char newb =(char) b ;</span><br><span class="line">            sb.append(newb) ;</span><br><span class="line">        &#125;</span><br><span class="line">        return sb.toString() ;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private static String encryptKaisa(String input) &#123;</span><br><span class="line">        char[] chars = input.toCharArray() ;</span><br><span class="line">        StringBuilder sb = new StringBuilder() ;</span><br><span class="line">        for (char aChar : chars) &#123;</span><br><span class="line">            int b = aChar ;</span><br><span class="line">            b = b + 3 ;</span><br><span class="line">            char newb = (char) b ;</span><br><span class="line">            sb.append(newb) ;</span><br><span class="line">        &#125;</span><br><span class="line">        //System.out.println(sb.toString());</span><br><span class="line">        return sb.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="频率分析法-——-概率论"><a href="#频率分析法-——-概率论" class="headerlink" title="频率分析法 —— 概率论"></a>频率分析法 —— 概率论</h3><p>·密码棒</p>
+<p>·目的：不知道密钥情况下进行破解密文</p>
+<p>方法：拿到密文选出频率最高的字母，比如最高的是j，对应明文为e;以此类推</p>
+<h3 id="Byte和Bit的关系（总搞混）"><a href="#Byte和Bit的关系（总搞混）" class="headerlink" title="Byte和Bit的关系（总搞混）"></a>Byte和Bit的关系（总搞混）</h3><p><strong>Byte</strong>：字节，数据<strong>存储</strong>的基本单位，比如移动硬盘1T，单位是Byte</p>
+<p><strong>Bit</strong>：位，用0或1表示，是数据<strong>传输</strong>的单位</p>
+<p><strong>关系</strong>：1Byte = 8Bit</p>
+<p>举个栗子：</p>
+<p>a的Byte表示：97；bit表示为：1100001（二进制）</p>
+<p><strong>代码实现Byte和Bit互相转化</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class ByteBit &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        String a = &quot;a&quot; ;</span><br><span class="line">        //得到字节数组</span><br><span class="line">        byte[] bytes = a.getBytes() ;</span><br><span class="line">        for (byte aByte : bytes) &#123;</span><br><span class="line">            int c = aByte ;</span><br><span class="line">            //byte字节对应bit</span><br><span class="line">            String s = Integer.toBinaryString(c);</span><br><span class="line">            System.out.println(s);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>而中文对应的utf-8是3个字节，高位编码自动补全</p>
+<p>如果是GBK，一个中文对应2个字节</p>
+<h3 id="DES"><a href="#DES" class="headerlink" title="DES"></a>DES</h3><p>具体见另一篇博客（x</p>
+<h3 id="base64浅谈"><a href="#base64浅谈" class="headerlink" title="base64浅谈"></a>base64浅谈</h3><p><strong>不是加密算法，是可读性算法</strong><br>原理：3字节为一组，1字节=8位，共24位，base64把3个字节转换成4组，每组6位，缺少2位，要在高位补0。</p>
+<p><strong>好处</strong>：base64取后6位，前2位会去掉，可以把base64控制到0-63之间（0：000000，1：111111）</p>
+<p><strong>坏处</strong>：内存占用变大</p>
+<p>目的：可读性，否则得到乱码</p>
+<p>由64个字符组成：A-Z,a-z,0-9,+,/</p>
+<p>base58是用在比特币里面的编码方式，</p>
+<pre><code>·没有数字0和字母o,
+
+·没有大写字母I和小写i,
+
+·没有+和/。
+</code></pre><h3 id="加密模式"><a href="#加密模式" class="headerlink" title="加密模式"></a>加密模式</h3><h4 id="·ECB-电子密码本"><a href="#·ECB-电子密码本" class="headerlink" title="·ECB:电子密码本"></a>·ECB:电子密码本</h4><p>把加密消息分割后独立加密再组合</p>
+<p><strong>优点</strong>：<br>并行处理，速度快</p>
+<p><strong>缺点</strong>：<br>使用同一个key，安全性弱</p>
+<h4 id="·CBC-密码块链接"><a href="#·CBC-密码块链接" class="headerlink" title="·CBC:密码块链接"></a>·CBC:密码块链接</h4><p>每个明文块先与前一个密文块异或后在加密，每个密文块都依赖于它前面所有明文块。</p>
+<p><strong>优点</strong>：<br>加密强度高</p>
+<p><strong>缺点</strong>：<br>并行处理，慢</p>
+<h3 id="非对称加密"><a href="#非对称加密" class="headerlink" title="非对称加密"></a>非对称加密</h3><p>“现代加密算法”</p>
+<p>必须2个密钥，公钥和私钥（一公一母）</p>
+<p>常见：RSA,ECC</p>
+<p>或取公钥和私钥：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">import com.sun.org.apache.xml.internal.security.utils.Base64;</span><br><span class="line"></span><br><span class="line">import java.security.KeyPair;</span><br><span class="line">import java.security.KeyPairGenerator ;</span><br><span class="line">import java.security.PrivateKey;</span><br><span class="line">import java.security.PublicKey;</span><br><span class="line"></span><br><span class="line">public class Rsa &#123;</span><br><span class="line">    public static void main(String[] args)throws Exception &#123;</span><br><span class="line">        //创建密钥对</span><br><span class="line">//生成器对象</span><br><span class="line">String algorithm = &quot;RSA&quot; ;</span><br><span class="line">KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance(algorithm) ;</span><br><span class="line">//生成密钥对</span><br><span class="line">KeyPair keyPair =  keyPairGenerator.generateKeyPair() ;</span><br><span class="line">PrivateKey aPrivate = keyPair.getPrivate();</span><br><span class="line">PublicKey aPublic = keyPair.getPublic();</span><br><span class="line">//获取私钥字节数组</span><br><span class="line">byte[] privateEncoded = aPrivate.getEncoded() ;</span><br><span class="line">        byte[] publicEncodeed = aPublic.getEncoded() ;</span><br><span class="line">//base64转码</span><br><span class="line">String privateEncodeString = Base64.encode(privateEncoded) ;</span><br><span class="line">String publicEncodeString = Base64.encode(publicEncodeed) ;</span><br><span class="line">//打印</span><br><span class="line">System.out.println(privateEncodeString);</span><br><span class="line">System.out.println(publicEncodeString);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="数字签名"><a href="#数字签名" class="headerlink" title="数字签名"></a>数字签名</h3><p>公钥数字签名，只有信息的发送者才能产生别人无法伪造的一段数字串覆盖在文件上。</p>
+<h4 id="数字证书"><a href="#数字证书" class="headerlink" title="数字证书"></a>数字证书</h4><p>认证机构把公钥A、通过自己的私钥对认证机构加密、再和数字签名A打包生成证书返回给服务器。</p>
+<p>点开一个网址就能看到。</p>
+<p><strong>CA认证中心</strong></p>
+<p>专门颁发、签发数字证书</p>
+<h4 id="网页加密"><a href="#网页加密" class="headerlink" title="网页加密"></a>网页加密</h4><p>step1：客户端向服务器发送加密请求；(request)</p>
+<p>step2：服务器用自己的私钥加密网页后，连同本身的数字证书一起发送给客户端；(response)</p>
+<p>step3：证书管理器里有证书颁发列表，客户会根据这张表查看解开数字证书的公钥是否在列表内；</p>
+<pre><code>如果数字证书的网址与正在浏览的网址不一样，那就是证书可能被冒用，浏览器发出警告；
+
+如果可靠，客户端使用证书中服务器公钥，对信息加密，然后与服务器交换加密信息。(exchange encrypted data)
+</code></pre>
+    </div>
+
+    
+    
+    
+
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+  
+</div>
+        <div class="reward-container">
+  <div>请作者喝一杯蜜雪冰城吧！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="NexusXDUlbh 微信支付">
+        <p>微信支付</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>NexusXDUlbh
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://nexuslbh.top/2022/04/05/%E5%AF%86%E7%A0%81%E5%AD%A6%E6%A6%82%E8%BF%B0/" title="密码学概述">http://nexuslbh.top/2022/04/05/密码学概述/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/SEC/" rel="tag"><i class="fa fa-tag"></i> SEC</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/04/04/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB%E7%BB%BC%E8%BF%B0/" rel="prev" title="文献阅读综述">
+      <i class="fa fa-chevron-left"></i> 文献阅读综述
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/04/20/%E4%BB%80%E4%B9%88%E6%98%AF%E7%A7%91%E7%A0%94/" rel="next" title="科研入坑指南">
+      科研入坑指南 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">基础概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81%E5%AD%A6"><span class="nav-number">1.1.</span> <span class="nav-text">古典密码学</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%91%E4%BB%A3%E5%AF%86%E7%A0%81%E5%AD%A6"><span class="nav-number">1.2.</span> <span class="nav-text">近代密码学</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E5%AD%A6"><span class="nav-number">1.3.</span> <span class="nav-text">现代密码学</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ASCII%E7%BC%96%E7%A0%81"><span class="nav-number">1.4.</span> <span class="nav-text">ASCII编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%91%E7%8E%87%E5%88%86%E6%9E%90%E6%B3%95-%E2%80%94%E2%80%94-%E6%A6%82%E7%8E%87%E8%AE%BA"><span class="nav-number">1.5.</span> <span class="nav-text">频率分析法 —— 概率论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Byte%E5%92%8CBit%E7%9A%84%E5%85%B3%E7%B3%BB%EF%BC%88%E6%80%BB%E6%90%9E%E6%B7%B7%EF%BC%89"><span class="nav-number">1.6.</span> <span class="nav-text">Byte和Bit的关系（总搞混）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DES"><span class="nav-number">1.7.</span> <span class="nav-text">DES</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#base64%E6%B5%85%E8%B0%88"><span class="nav-number">1.8.</span> <span class="nav-text">base64浅谈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A0%E5%AF%86%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.9.</span> <span class="nav-text">加密模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%C2%B7ECB-%E7%94%B5%E5%AD%90%E5%AF%86%E7%A0%81%E6%9C%AC"><span class="nav-number">1.9.1.</span> <span class="nav-text">·ECB:电子密码本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%C2%B7CBC-%E5%AF%86%E7%A0%81%E5%9D%97%E9%93%BE%E6%8E%A5"><span class="nav-number">1.9.2.</span> <span class="nav-text">·CBC:密码块链接</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86"><span class="nav-number">1.10.</span> <span class="nav-text">非对称加密</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D"><span class="nav-number">1.11.</span> <span class="nav-text">数字签名</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E5%AD%97%E8%AF%81%E4%B9%A6"><span class="nav-number">1.11.1.</span> <span class="nav-text">数字证书</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BD%91%E9%A1%B5%E5%8A%A0%E5%AF%86"><span class="nav-number">1.11.2.</span> <span class="nav-text">网页加密</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="NexusXDUlbh"
+      src="/images/arch.png">
+  <p class="site-author-name" itemprop="name">NexusXDUlbh</p>
+  <div class="site-description" itemprop="description"><font color="#FFFFFF">日拱一卒 功不唐捐</font></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">37</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/NexusXDlbh" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;NexusXDlbh" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:3321861647@qq.com" title="E-Mail → mailto:3321861647@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/NexusLbh" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;NexusLbh" rel="noopener" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>StackOverflow</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://t13mk.github.io/" title="https:&#x2F;&#x2F;T13MK.github.io" rel="noopener" target="_blank">Lixin Gao</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.woooo.tech/" title="https:&#x2F;&#x2F;blog.woooo.tech" rel="noopener" target="_blank">Reverier Xu</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://wyh01.top/" title="https:&#x2F;&#x2F;wyh01.top" rel="noopener" target="_blank">Yinghao Wei</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://aldol-reaction.github.io/" title="https:&#x2F;&#x2F;aldol-reaction.github.io" rel="noopener" target="_blank">Shuqi Wang</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.wingszeng.top/" title="https:&#x2F;&#x2F;blog.wingszeng.top" rel="noopener" target="_blank">Wings Zeng</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://lhchen.top/" title="https:&#x2F;&#x2F;lhchen.top" rel="noopener" target="_blank">LH Chen</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://cdcq.github.io/" title="https:&#x2F;&#x2F;cdcq.github.io" rel="noopener" target="_blank">cdcq</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">NexusXDUlbh</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">184k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">2:48</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'NLtLmA6YQidughGHtg1RBkvk-gzGzoHsz',
+      appKey     : 'VdYpKRx5SPqTdAIEf3XpsmAp',
+      placeholder: "Just go go",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
+
