@@ -1321,7 +1321,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #ad441f;
+  background: #9ca6db;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -1715,6 +1715,16 @@ pre .javascript .function {
 }
 .use-motion .collection-header {
   opacity: 0;
+}
+.post-body p a {
+  color: #0593d3;
+  border-bottom: none;
+  border-bottom: 1px solid #0593d3;
+}
+.post-body p a:hover {
+  color: #fc6423;
+  border-bottom: none;
+  border-bottom: 1px solid #fc6423;
 }
 .posts-collapse {
   margin-left: 35px;
@@ -2534,7 +2544,7 @@ mjx-container + br {
   }
 }
 .site-brand-container {
-  background: #222;
+  background: #cd4f39;
 }
 @media (max-width: 991px) {
   .site-brand-container {
@@ -2542,7 +2552,7 @@ mjx-container + br {
   }
 }
 .site-meta {
-  padding: 20px 0;
+  padding: 30px 20px;
 }
 .brand {
   padding: 0;
