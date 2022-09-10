@@ -49,7 +49,7 @@
 <meta property="og:image" content="http://nexuslbh.top/2022/09/07/%E5%BE%AE%E5%8E%9F%E4%B8%8E%E6%B1%87%E7%BC%96/yj3.png">
 <meta property="og:image" content="http://nexuslbh.top/2022/09/07/%E5%BE%AE%E5%8E%9F%E4%B8%8E%E6%B1%87%E7%BC%96/yj4.png">
 <meta property="article:published_time" content="2022-09-07T08:35:38.000Z">
-<meta property="article:modified_time" content="2022-09-08T03:17:31.699Z">
+<meta property="article:modified_time" content="2022-09-09T12:05:40.342Z">
 <meta property="article:author" content="NexusXDUlbh">
 <meta property="article:tag" content="ComputerSystem">
 <meta name="twitter:card" content="summary">
@@ -364,7 +364,7 @@ mjx-container[display="true"] + br {
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-09-08 11:17:31" itemprop="dateModified" datetime="2022-09-08T11:17:31+08:00">2022-09-08</time>
+                <time title="修改时间：2022-09-09 20:05:40" itemprop="dateModified" datetime="2022-09-09T20:05:40+08:00">2022-09-09</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -396,7 +396,7 @@ mjx-container[display="true"] + br {
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>6.5k</span>
+              <span>6.6k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -664,7 +664,7 @@ mjx-container[display="true"] + br {
 <p><strong>③段的概念</strong></p>
 <p>🤡这个概念挺会混淆视听的，内存压根没有分段这一说，如果在开始有这样的错误认知，会影响后续的学习。</p>
 <p>✍段的划分实际上<strong>来源于CPU</strong>。比如：我们可以认为地址10000H-100FFH的内存单元算一个段，段起始地址为10000H，段地址为1000H，段的大小为100H；当然我们也可以认为地址10000H-1007FH、10080H-100FFH的内存单元是两个段，段的大小都是80H。编程时根据需要，将若干地址连续看成一个段，就是<strong>逻辑段</strong>。<strong>段地址<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.05ex" xmlns="http://www.w3.org/2000/svg" width="4.023ex" height="1.557ex" role="img" focusable="false" viewbox="0 -666 1778 688"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="D7" d="M630 29Q630 9 609 9Q604 9 587 25T493 118L389 222L284 117Q178 13 175 11Q171 9 168 9Q160 9 154 15T147 29Q147 36 161 51T255 146L359 250L255 354Q174 435 161 449T147 471Q147 480 153 485T168 490Q173 490 175 489Q178 487 284 383L389 278L493 382Q570 459 587 475T609 491Q630 491 630 471Q630 464 620 453T522 355L418 250L522 145Q606 61 618 48T630 29Z"/></g><g data-mml-node="mn" transform="translate(778,0)"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"/><path data-c="36" d="M42 313Q42 476 123 571T303 666Q372 666 402 630T432 550Q432 525 418 510T379 495Q356 495 341 509T326 548Q326 592 373 601Q351 623 311 626Q240 626 194 566Q147 500 147 364L148 360Q153 366 156 373Q197 433 263 433H267Q313 433 348 414Q372 400 396 374T435 317Q456 268 456 210V192Q456 169 451 149Q440 90 387 34T253 -22Q225 -22 199 -14T143 16T92 75T56 172T42 313ZM257 397Q227 397 205 380T171 335T154 278T148 216Q148 133 160 97T198 39Q222 21 251 21Q302 21 329 59Q342 77 347 104T352 209Q352 289 347 316T329 361Q302 397 257 397Z" transform="translate(500,0)"/></g></g></g></svg></mjx-container>作为段的起始地址，所以<u>段的起始地址</u>一定是16的倍数(后4位是0)；偏移地址定位段中的内存单元，为16位，所以段长度最大为<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.186ex" xmlns="http://www.w3.org/2000/svg" width="5.307ex" height="2.072ex" role="img" focusable="false" viewbox="0 -833.9 2345.9 915.9"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msup"><g data-mml-node="mn"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"/></g><g data-mml-node="TeXAtom" transform="translate(533,363) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mn"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"/><path data-c="36" d="M42 313Q42 476 123 571T303 666Q372 666 402 630T432 550Q432 525 418 510T379 495Q356 495 341 509T326 548Q326 592 373 601Q351 623 311 626Q240 626 194 566Q147 500 147 364L148 360Q153 366 156 373Q197 433 263 433H267Q313 433 348 414Q372 400 396 374T435 317Q456 268 456 210V192Q456 169 451 149Q440 90 387 34T253 -22Q225 -22 199 -14T143 16T92 75T56 172T42 313ZM257 397Q227 397 205 380T171 335T154 278T148 216Q148 133 160 97T198 39Q222 21 251 21Q302 21 329 59Q342 77 347 104T352 209Q352 289 347 316T329 361Q302 397 257 397Z" transform="translate(500,0)"/></g></g></g><g data-mml-node="mo" transform="translate(1567.9,0)"><path data-c="3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"/></g></g></g></svg></mjx-container>64KB，也可以说：仅用偏移地址来寻址最多寻64KB个内存单元，范围是：0-FFFFH</strong>。</p>
-<p>8086系统将1MB存储空间分为若干存储段，每段固定大小64KB，正是8086这样的设计，才有主存储器的IO空间的特殊结构。</p>
+<p>8086系统将1MB存储空间分为若干存储段，每段固定大小64KB，正是8086这样的设计，才有主存储器的IO空间的特殊结构。8086支持20位地址，总共1MB内存，但只能使用640KB，因为其余的必须保留，供系统使用。(见下图)</p>
 <p><img src="/2022/09/07/%E5%BE%AE%E5%8E%9F%E4%B8%8E%E6%B1%87%E7%BC%96/861mb.png" style="zoom:80%;"></p>
 <p><strong>1.主存和IO地址空间大小与分体结构</strong></p>
 <p><img src="/2022/09/07/%E5%BE%AE%E5%8E%9F%E4%B8%8E%E6%B1%87%E7%BC%96/stjg.png" style="zoom:50%;"></p>
@@ -680,7 +680,7 @@ mjx-container[display="true"] + br {
 <p>下面结合例题说明</p>
 <p><img src="/2022/09/07/%E5%BE%AE%E5%8E%9F%E4%B8%8E%E6%B1%87%E7%BC%96/eg1.png" style="zoom:75%;"></p>
 <p>第一问，CS与IP配合做PC的功能，即：任意时刻CPU将CS:IP指向的内容当作指令执行。<strong>FFFF0H单元中的指令是8086开机执行的第一条指令。</strong>其余略。</p>
-<p>第二问，“由该物理地址决定的逻辑地址是什么？”，这句话就让你求CS和IP（段地址+偏移量），在JMP的前一个指令执行完成后，逻辑地址加载到CS和IP中，例如选择逻辑地址为2000H:0100H，则JMP执行后，CS=2000H,IP=0100H。<strong>JMP指令执行前后CS发生改变，故该程序实现了段间转移。</strong></p>
+<p>第二问，“由该物理地址决定的逻辑地址是什么？”，这句话就让你求CS和IP（段地址+偏移量），在JMP的前一个指令执行完成后，逻辑地址加载到CS和IP中，例如选择逻辑地址为2000H:0100H，则JMP执行后，CS=2000H,IP=0100H。<strong>JMP指令执行前后CS发生改变，故该程序实现了段间转移。</strong>一般来说，大约有0x1000(4096)对不同的CS:IP地址组合能指向同一个内存地址。</p>
 <p><img src="/2022/09/07/%E5%BE%AE%E5%8E%9F%E4%B8%8E%E6%B1%87%E7%BC%96/fdjg.png" style="zoom:50%;"></p>
 <p>显示缓冲区就是个例子</p>
 <p><img src="/2022/09/07/%E5%BE%AE%E5%8E%9F%E4%B8%8E%E6%B1%87%E7%BC%96/xsp.png" style="zoom:67%;"></p>
@@ -986,6 +986,7 @@ mjx-container[display="true"] + br {
 </tbody>
 </table>
 </div>
+<p>​                                                                                                                                                                                                                                   </p>
 
     </div>
 
@@ -1061,7 +1062,10 @@ mjx-container[display="true"] + br {
     <a href="/2022/08/31/Spawn-Failed/" rel="prev" title="Spawn Failed">
       <i class="fa fa-chevron-left"></i> Spawn Failed
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2022/09/08/QRcode/" rel="next" title="QRcode">
+      QRcode <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -1137,7 +1141,7 @@ mjx-container[display="true"] + br {
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-count">39</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1179,7 +1183,7 @@ mjx-container[display="true"] + br {
           <h4 class="widget-title" style="font-size:20px;text-align:center;color:#0080FF;margin:20px 0 0px;">Tag Cloud</h4>
           <div id="myCanvasContainer" class="widget tagcloud" style="font-size:20px;">
               <canvas width="220" height="200" id="resCanvas" style="width=100%">
-                  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSer/" rel="tag">CSer</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ComputerSystem/" rel="tag">ComputerSystem</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DataBase/" rel="tag">DataBase</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ML/" rel="tag">ML</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Math/" rel="tag">Math</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SEC/" rel="tag">SEC</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Search/" rel="tag">Search</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/University/" rel="tag">University</a><span class="tag-list-count">4</span></li></ul>
+                  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSer/" rel="tag">CSer</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ComputerSystem/" rel="tag">ComputerSystem</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DataBase/" rel="tag">DataBase</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ML/" rel="tag">ML</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Math/" rel="tag">Math</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SEC/" rel="tag">SEC</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Search/" rel="tag">Search</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/University/" rel="tag">University</a><span class="tag-list-count">4</span></li></ul>
               </canvas>
           </div>
       </div>
@@ -1213,12 +1217,12 @@ mjx-container[display="true"] + br {
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">191k</span>
+    <span title="站点总字数">193k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:54</span>
+    <span title="站点阅读时长">2:55</span>
 </div>
 
         
