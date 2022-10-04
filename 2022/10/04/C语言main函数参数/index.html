@@ -29,7 +29,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://nexuslbh.top/2022/10/04/C%E8%AF%AD%E8%A8%80main%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0/arg.png">
 <meta property="article:published_time" content="2022-10-03T16:33:51.000Z">
-<meta property="article:modified_time" content="2022-10-03T17:20:15.959Z">
+<meta property="article:modified_time" content="2022-10-03T17:40:24.298Z">
 <meta property="article:author" content="NexusXDUlbh">
 <meta property="article:tag" content="CSer">
 <meta name="twitter:card" content="summary">
@@ -338,7 +338,7 @@ mjx-container[display="true"] + br {
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2022-10-04 00:33:51 / 修改时间：01:20:15" itemprop="dateCreated datePublished" datetime="2022-10-04T00:33:51+08:00">2022-10-04</time>
+              <time title="创建时间：2022-10-04 00:33:51 / 修改时间：01:40:24" itemprop="dateCreated datePublished" datetime="2022-10-04T00:33:51+08:00">2022-10-04</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -413,7 +413,8 @@ mjx-container[display="true"] + br {
 <p>不支持的原因如下：</p>
 <p>Because ISO C specifies that the main function be written with two arguments, and because this third argument provides no benefit over the global variable environ, POSIX.1 specifies that environ should be used instead of the (possible) third argument. Access to specific environment variables is normally through the getenv and putenv functions instead of through the environ variable. But to go through the entire environment, the environ pointer must be used.</p>
 <p>上面这段话的意思主要是说：ISO C都说明了main函数必须要2个参数，因为第三个参数对全局变量没有任何好处，所以POSIX.1指出参数environ除了作为第三个参数不能有其余的用途。针对某个特定环境一般使用getenv和putenv这两个函数而不是environ变量。如果想遍历<strong>整个环境</strong>，必须要用environ参数。</p>
-<p>ISO C/ISO C++ ,POSIX 标准都不支持main 三个参数的定义形式，<strong>VC 和GNU编译器都扩展了main 函数的定义</strong>，所以目前可以这样使用。</p>
+<p>ISO C C++ ,POSIX 标准都不支持main 三个参数的定义形式，<strong>VC 和GNU编译器都扩展了main 函数的定义</strong>，所以目前可以这样使用。</p>
+<p>✋如果要编写更加可移植的程序，应该使用全局环境变量environ 来代替envp的作用，如果要访问特定的环境变量，应该使用getenv 和putenv 函数</p>
 <p>(9)一般不认为是正确的写法。但是在嵌入式系统中有使用（包括void main()形式）</p>
 <h2 id="4-PDF附件"><a href="#4-PDF附件" class="headerlink" title="4.PDF附件"></a>4.PDF附件</h2><div class="pdfobject-container" data-target="shell.pdf" data-height="500px"></div>
 
@@ -491,7 +492,10 @@ mjx-container[display="true"] + br {
     <a href="/2022/10/03/%E7%94%B1%E4%B8%80%E9%81%93%E6%96%B0%E7%94%9F%E4%BD%9C%E4%B8%9A%E5%BC%95%E5%8F%91%E7%9A%84%E6%80%9D%E8%80%83/" rel="prev" title="由一道新生作业引发的思考">
       <i class="fa fa-chevron-left"></i> 由一道新生作业引发的思考
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2022/10/04/%E5%AF%B9%E9%93%BE%E6%8E%A5%E7%9A%84%E6%80%9D%E8%80%83/" rel="next" title="对链接的思考">
+      对链接的思考 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -567,7 +571,7 @@ mjx-container[display="true"] + br {
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">45</span>
+          <span class="site-state-item-count">47</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -609,7 +613,7 @@ mjx-container[display="true"] + br {
           <h4 class="widget-title" style="font-size:20px;text-align:center;color:#0080FF;margin:20px 0 0px;">Tag Cloud</h4>
           <div id="myCanvasContainer" class="widget tagcloud" style="font-size:20px;">
               <canvas width="220" height="200" id="resCanvas" style="width=100%">
-                  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSer/" rel="tag">CSer</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ComputerSystem/" rel="tag">ComputerSystem</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DataBase/" rel="tag">DataBase</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ML/" rel="tag">ML</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Math/" rel="tag">Math</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SEC/" rel="tag">SEC</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Search/" rel="tag">Search</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/University/" rel="tag">University</a><span class="tag-list-count">4</span></li></ul>
+                  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSer/" rel="tag">CSer</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ComputerSystem/" rel="tag">ComputerSystem</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DataBase/" rel="tag">DataBase</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ML/" rel="tag">ML</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Math/" rel="tag">Math</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SEC/" rel="tag">SEC</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Search/" rel="tag">Search</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/University/" rel="tag">University</a><span class="tag-list-count">4</span></li></ul>
               </canvas>
           </div>
       </div>
@@ -643,12 +647,12 @@ mjx-container[display="true"] + br {
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">217k</span>
+    <span title="站点总字数">219k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3:17</span>
+    <span title="站点阅读时长">3:19</span>
 </div>
 
         
