@@ -20,20 +20,23 @@
     var CONFIG = {"hostname":"nexuslbh.top","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="重温DES（Data Encryption Standard）">
+  <meta name="description" content="😑正确答案是：C">
 <meta property="og:type" content="article">
-<meta property="og:title" content="DES算法实现——Lab">
-<meta property="og:url" content="http://nexuslbh.top/2022/04/03/DES%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94Lab/index.html">
+<meta property="og:title" content="一道计组考研题的思考">
+<meta property="og:url" content="http://nexuslbh.top/2022/10/22/%E4%B8%80%E9%81%93%E8%AE%A1%E7%BB%84%E8%80%83%E7%A0%94%E9%A2%98%E7%9A%84%E6%80%9D%E8%80%83/index.html">
 <meta property="og:site_name" content="Meta Field">
-<meta property="og:description" content="重温DES（Data Encryption Standard）">
+<meta property="og:description" content="😑正确答案是：C">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-04-03T15:23:02.000Z">
-<meta property="article:modified_time" content="2022-08-28T12:56:12.414Z">
+<meta property="og:image" content="http://nexuslbh.top/2022/10/22/%E4%B8%80%E9%81%93%E8%AE%A1%E7%BB%84%E8%80%83%E7%A0%94%E9%A2%98%E7%9A%84%E6%80%9D%E8%80%83/tm.png">
+<meta property="og:image" content="http://nexuslbh.top/2022/10/22/%E4%B8%80%E9%81%93%E8%AE%A1%E7%BB%84%E8%80%83%E7%A0%94%E9%A2%98%E7%9A%84%E6%80%9D%E8%80%83/res.png">
+<meta property="article:published_time" content="2022-10-22T15:24:13.000Z">
+<meta property="article:modified_time" content="2022-10-22T16:00:37.437Z">
 <meta property="article:author" content="NexusXDUlbh">
-<meta property="article:tag" content="SEC">
+<meta property="article:tag" content="CSer">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://nexuslbh.top/2022/10/22/%E4%B8%80%E9%81%93%E8%AE%A1%E7%BB%84%E8%80%83%E7%A0%94%E9%A2%98%E7%9A%84%E6%80%9D%E8%80%83/tm.png">
 
-<link rel="canonical" href="http://nexuslbh.top/2022/04/03/DES%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94Lab/">
+<link rel="canonical" href="http://nexuslbh.top/2022/10/22/%E4%B8%80%E9%81%93%E8%AE%A1%E7%BB%84%E8%80%83%E7%A0%94%E9%A2%98%E7%9A%84%E6%80%9D%E8%80%83/">
 
 
 <script id="page-configurations">
@@ -46,7 +49,7 @@
   };
 </script>
 
-  <title>DES算法实现——Lab | Meta Field</title>
+  <title>一道计组考研题的思考 | Meta Field</title>
   
 
 
@@ -80,7 +83,119 @@
   <!-- 页面点击小红心 -->
   <script type="text/javascript" src="/js/clicklove.js"></script>
   
-</head>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -200,7 +315,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://nexuslbh.top/2022/04/03/DES%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94Lab/">
+    <link itemprop="mainEntityOfPage" href="http://nexuslbh.top/2022/10/22/%E4%B8%80%E9%81%93%E8%AE%A1%E7%BB%84%E8%80%83%E7%A0%94%E9%A2%98%E7%9A%84%E6%80%9D%E8%80%83/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/arch.png">
@@ -213,7 +328,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          DES算法实现——Lab
+          一道计组考研题的思考
         </h1>
 
         <div class="post-meta">
@@ -223,14 +338,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2022-04-03 23:23:02" itemprop="dateCreated datePublished" datetime="2022-04-03T23:23:02+08:00">2022-04-03</time>
+              <time title="创建时间：2022-10-22 23:24:13" itemprop="dateCreated datePublished" datetime="2022-10-22T23:24:13+08:00">2022-10-22</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-28 20:56:12" itemprop="dateModified" datetime="2022-08-28T20:56:12+08:00">2022-08-28</time>
+                <time title="修改时间：2022-10-23 00:00:37" itemprop="dateModified" datetime="2022-10-23T00:00:37+08:00">2022-10-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -238,7 +353,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a>
+                  <a href="/categories/%E7%A7%91%E7%A0%94/" itemprop="url" rel="index"><span itemprop="name">科研</span></a>
                 </span>
             </span>
 
@@ -251,8 +366,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2022/04/03/DES%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94Lab/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2022/04/03/DES%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94Lab/" itemprop="commentCount"></span>
+    <a title="valine" href="/2022/10/22/%E4%B8%80%E9%81%93%E8%AE%A1%E7%BB%84%E8%80%83%E7%A0%94%E9%A2%98%E7%9A%84%E6%80%9D%E8%80%83/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/10/22/%E4%B8%80%E9%81%93%E8%AE%A1%E7%BB%84%E8%80%83%E7%A0%94%E9%A2%98%E7%9A%84%E6%80%9D%E8%80%83/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -262,14 +377,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1.9k</span>
+              <span>522</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
+              <span>1 分钟</span>
             </span>
 
         </div>
@@ -281,38 +396,23 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="重温DES（Data-Encryption-Standard）"><a href="#重温DES（Data-Encryption-Standard）" class="headerlink" title="重温DES（Data Encryption Standard）"></a>重温DES（<strong>Data Encryption Standard</strong>）</h1><span id="more"></span>
-<p>对称加密：使用同一把密钥，分为 流加密 、 块加密</p>
-<p>eg:</p>
-<p>流加密12345，分别加密1，2，3，4，5</p>
-<p>分组加密12345</p>
-<p>特点：</p>
-<pre><code>·加密速度快
-
-·密文可逆，一旦密钥文件泄露，数据就会暴露
-
-·加密后ASCII编码表找不到码会乱码
-
-·结合base64一起使用
-</code></pre><h2 id="DES结构"><a href="#DES结构" class="headerlink" title="DES结构"></a>DES结构</h2><p>DES也被称为Feistel网络，加密的各个步骤被称为 <strong>轮（round）</strong> ,DES是对称加密密码的代表。</p>
-<p><strong>关键思想：</strong> 将待加密信息分为两部分，如64位信息平均分为32位。</p>
-<p><strong>子密钥（subkey）：</strong> 是本轮加密使用的密钥（本轮的意思就是每一轮都需要使用一个不同的子密钥），故是局部密钥。</p>
-<p><strong>轮函数：</strong> 根据“右侧”和子密钥生成，对“左侧”进行加密的比特序列，<strong>轮函数是密码系统的核心</strong>。轮函数与左侧进行XOR运算，结果就是<strong>加密后的左侧。</strong></p>
-<h2 id="每一轮具体步骤"><a href="#每一轮具体步骤" class="headerlink" title="每一轮具体步骤"></a>每一轮具体步骤</h2><p>（1）将输入数据等分为左右两部分；</p>
-<p>（2）输入右侧直接发送到输出右侧；</p>
-<p>（3）输入右侧发送到轮函数；</p>
-<p>（4）轮函数根据右侧数据和子密钥计算出一串bit序列；</p>
-<p>（5）将（4）中的bit序列与左侧数据XOR运算，得到加密后的左侧结果。</p>
-<p><strong>但是这样一来，右侧没有被加密，因此需要用不同的子密钥对一轮处理重复若干次并在每两轮处理之间将左侧和右侧数据对调</strong>。</p>
-<p>eg：3轮加密需要进行2次左右对调，<strong>对调只在两轮之间进行，最后一轮不用对调</strong>。</p>
-<h2 id="解密操作"><a href="#解密操作" class="headerlink" title="解密操作"></a>解密操作</h2><p>将一轮加密的输出结果用相同的子密钥重新运行一次。<br>DES的解密算法与加密算法完全相同,<br>只需要将密钥的应用次序与加密时相反应用即可。</p>
-<p>即解密过程是初始置换函数IP接受长度为64比特的密文输入,将16个子密钥按照K16到K1的顺序应用与函数F的16 轮迭代运算中,然后将迭代的结果经由末置换函数I-P1得到64位的明文输出。</p>
-<h2 id="Feistel网络性质"><a href="#Feistel网络性质" class="headerlink" title="Feistel网络性质"></a>Feistel网络性质</h2><p>1.轮数可以任意增加</p>
-<p>2.加密时无论使用任何函数都可以正确解密</p>
-<p>3.加密解密可以用完全相同结构来实现</p>
-<h2 id="三重DES"><a href="#三重DES" class="headerlink" title="三重DES"></a>三重DES</h2><p>值得注意的一点是：三重DES是 <strong>加密——&gt;解密——&gt;加密</strong>的过程，而不是三次加密，这是为了让三重DES兼容普通的DES。</p>
-<p>DES最后被AES（<strong>Advanced Encryption Standard</strong>）代替了。</p>
-<h1 id="下面讲讲具体算法每一步的实现"><a href="#下面讲讲具体算法每一步的实现" class="headerlink" title="下面讲讲具体算法每一步的实现"></a>下面讲讲具体算法每一步的实现</h1><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">import com.sun.org.apache.xml.internal.security.utils.Base64;</span><br><span class="line">import javax.crypto.Cipher ;</span><br><span class="line">import javax.crypto.spec.SecretKeySpec;</span><br><span class="line"></span><br><span class="line">public class DesDemo &#123;</span><br><span class="line">    public static void main(String[] args) throws Exception &#123;</span><br><span class="line">        //原文</span><br><span class="line">        String input = &quot;实验室&quot; ;</span><br><span class="line">        //定义DES密钥key，必须是8字节</span><br><span class="line">        String key = &quot;12345678&quot; ;</span><br><span class="line">        //表示算法</span><br><span class="line">        String transformation = &quot;DES&quot; ;</span><br><span class="line">        //表示加密类型</span><br><span class="line">        String  type = &quot;DES&quot; ;</span><br><span class="line">        //创建加密对象，引入Cipher类</span><br><span class="line">        Cipher cipher = Cipher.getInstance(&quot;DES&quot;) ;</span><br><span class="line">        //创建加密规则,即生成密钥</span><br><span class="line">        //参数1表示key的字节，2表示加密类型，和算法比较像</span><br><span class="line">        SecretKeySpec secretKeySpec = new SecretKeySpec(key.getBytes(),type) ;</span><br><span class="line">        //加密初始化</span><br><span class="line">        cipher.init(Cipher.ENCRYPT_MODE,secretKeySpec);</span><br><span class="line">        //参数1表示模式，分为加密和解密模式,参数2表示加密规则</span><br><span class="line"></span><br><span class="line">        //调用加密方法,参数表示原文字节数组，传进去原文</span><br><span class="line">        byte[] bytes = cipher.doFinal(input.getBytes());</span><br><span class="line">        //直接打印密文，会直接出现乱码,编码表找不到对应字符</span><br><span class="line">        //System.out.println(new String(bytes));</span><br><span class="line">        //解决方式1：迭代</span><br><span class="line">        //for (byte aByte : bytes) &#123;</span><br><span class="line">        //  System.out.println(aByte);</span><br><span class="line">        //&#125;</span><br><span class="line">        //解决方式2：对数据进行base64编码</span><br><span class="line">        String encode = Base64.encode(bytes);</span><br><span class="line">        System.out.println(encode);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <p>😑正确答案是：C</p>
+<span id="more"></span>
+<p><img src="/2022/10/22/%E4%B8%80%E9%81%93%E8%AE%A1%E7%BB%84%E8%80%83%E7%A0%94%E9%A2%98%E7%9A%84%E6%80%9D%E8%80%83/tm.png" alt></p>
+<h2 id="考点：移位"><a href="#考点：移位" class="headerlink" title="考点：移位"></a>考点：移位</h2><h3 id="有符号数："><a href="#有符号数：" class="headerlink" title="有符号数："></a>有符号数：</h3><p>有符号正数：</p>
+<p>原码/反码/补码：无论左移右移，符号位不变，移出位丢弃，空位补0</p>
+<p>有符号负数：</p>
+<p>·原码：无论左移右移，符号位不变，移出位丢弃，空位补0</p>
+<p>·反码：无论左移右移，符号位不变，移出位丢弃，空位补1</p>
+<p>·补码：无论左移右移，符号位不变，移出位丢弃，左移空位补0，右移空位补1</p>
+<h3 id="无符号数："><a href="#无符号数：" class="headerlink" title="无符号数："></a>无符号数：</h3><p>左移：&lt;&lt;</p>
+<p>右移：&gt;&gt;</p>
+<p>移出位一律补0</p>
+<h2 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h2><p>C语言中的左移右移与编程实现</p>
+<p>众所周知，计算机中的数据都是由补码表示，下面的代码实现了<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.05ex" xmlns="http://www.w3.org/2000/svg" width="4.837ex" height="1.67ex" role="img" focusable="false" viewbox="0 -716 2138 738"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mn"><path data-c="39" d="M352 287Q304 211 232 211Q154 211 104 270T44 396Q42 412 42 436V444Q42 537 111 606Q171 666 243 666Q245 666 249 666T257 665H261Q273 665 286 663T323 651T370 619T413 560Q456 472 456 334Q456 194 396 97Q361 41 312 10T208 -22Q147 -22 108 7T68 93T121 149Q143 149 158 135T173 96Q173 78 164 65T148 49T135 44L131 43Q131 41 138 37T164 27T206 22H212Q272 22 313 86Q352 142 352 280V287ZM244 248Q292 248 321 297T351 430Q351 508 343 542Q341 552 337 562T323 588T293 615T246 625Q208 625 181 598Q160 576 154 546T147 441Q147 358 152 329T172 282Q197 248 244 248Z"/></g><g data-mml-node="mi" transform="translate(500,0)"><path data-c="1D434" d="M208 74Q208 50 254 46Q272 46 272 35Q272 34 270 22Q267 8 264 4T251 0Q249 0 239 0T205 1T141 2Q70 2 50 0H42Q35 7 35 11Q37 38 48 46H62Q132 49 164 96Q170 102 345 401T523 704Q530 716 547 716H555H572Q578 707 578 706L606 383Q634 60 636 57Q641 46 701 46Q726 46 726 36Q726 34 723 22Q720 7 718 4T704 0Q701 0 690 0T651 1T578 2Q484 2 455 0H443Q437 6 437 9T439 27Q443 40 445 43L449 46H469Q523 49 533 63L521 213H283L249 155Q208 86 208 74ZM516 260Q516 271 504 416T490 562L463 519Q447 492 400 412L310 260L413 259Q516 259 516 260Z"/></g><g data-mml-node="mi" transform="translate(1250,0)"><path data-c="1D43B" d="M228 637Q194 637 192 641Q191 643 191 649Q191 673 202 682Q204 683 219 683Q260 681 355 681Q389 681 418 681T463 682T483 682Q499 682 499 672Q499 670 497 658Q492 641 487 638H485Q483 638 480 638T473 638T464 637T455 637Q416 636 405 634T387 623Q384 619 355 500Q348 474 340 442T328 395L324 380Q324 378 469 378H614L615 381Q615 384 646 504Q674 619 674 627T617 637Q594 637 587 639T580 648Q580 650 582 660Q586 677 588 679T604 682Q609 682 646 681T740 680Q802 680 835 681T871 682Q888 682 888 672Q888 645 876 638H874Q872 638 869 638T862 638T853 637T844 637Q805 636 794 634T776 623Q773 618 704 340T634 58Q634 51 638 51Q646 48 692 46H723Q729 38 729 37T726 19Q722 6 716 0H701Q664 2 567 2Q533 2 504 2T458 2T437 1Q420 1 420 10Q420 15 423 24Q428 43 433 45Q437 46 448 46H454Q481 46 514 49Q520 50 522 50T528 55T534 64T540 82T547 110T558 153Q565 181 569 198Q602 330 602 331T457 332H312L279 197Q245 63 245 58Q245 51 253 49T303 46H334Q340 38 340 37T337 19Q333 6 327 0H312Q275 2 178 2Q144 2 115 2T69 2T48 1Q31 1 31 10Q31 12 34 24Q39 43 44 45Q48 46 59 46H65Q92 46 125 49Q139 52 144 61Q147 65 216 339T285 628Q285 635 228 637Z"/></g></g></g></svg></mjx-container>作为<strong>补码</strong>的左移和右移：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>{</span><br><span class="line">    <span class="type">int</span> n = <span class="number">0x9A</span> ;</span><br><span class="line">    <span class="type">int</span> t = (n&lt;&lt;<span class="number">1</span>)&amp;<span class="number">0xff</span>;</span><br><span class="line">    <span class="comment">//n左移1位，末位补0，&amp;0xff使输出是8位</span></span><br><span class="line">    <span class="type">int</span> m = (n&gt;&gt;<span class="number">1</span>);</span><br><span class="line">    <span class="comment">//n右移1位，最高位补0，舍弃最右侧的1位</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%#X\n"</span>,t);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%#X\n"</span>,m);</span><br><span class="line">    <span class="comment">//"%#X"是输出16进制的一种形式，最推荐使用的就是这种格式</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span> ;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<p><img src="/2022/10/22/%E4%B8%80%E9%81%93%E8%AE%A1%E7%BB%84%E8%80%83%E7%A0%94%E9%A2%98%E7%9A%84%E6%80%9D%E8%80%83/res.png" alt></p>
 
     </div>
 
@@ -353,7 +453,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://nexuslbh.top/2022/04/03/DES%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94Lab/" title="DES算法实现——Lab">http://nexuslbh.top/2022/04/03/DES算法实现——Lab/</a>
+    <a href="http://nexuslbh.top/2022/10/22/%E4%B8%80%E9%81%93%E8%AE%A1%E7%BB%84%E8%80%83%E7%A0%94%E9%A2%98%E7%9A%84%E6%80%9D%E8%80%83/" title="一道计组考研题的思考">http://nexuslbh.top/2022/10/22/一道计组考研题的思考/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -364,7 +464,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/SEC/" rel="tag"><i class="fa fa-tag"></i> SEC</a>
+              <a href="/tags/CSer/" rel="tag"><i class="fa fa-tag"></i> CSer</a>
           </div>
           <script type="text/javascript">
             var tagsall=document.getElementsByClassName("post-tags")
@@ -385,13 +485,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/04/02/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" rel="prev" title="清明">
-      <i class="fa fa-chevron-left"></i> 清明
+    <a href="/2022/10/13/%E6%A0%88%E6%BA%A2%E5%87%BA/" rel="prev" title="栈溢出">
+      <i class="fa fa-chevron-left"></i> 栈溢出
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2022/04/04/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB%E7%BB%BC%E8%BF%B0/" rel="next" title="文献阅读综述">
-      文献阅读综述 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -451,7 +548,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%87%8D%E6%B8%A9DES%EF%BC%88Data-Encryption-Standard%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">重温DES（Data Encryption Standard）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#DES%E7%BB%93%E6%9E%84"><span class="nav-number">1.1.</span> <span class="nav-text">DES结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AF%8F%E4%B8%80%E8%BD%AE%E5%85%B7%E4%BD%93%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.2.</span> <span class="nav-text">每一轮具体步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E5%AF%86%E6%93%8D%E4%BD%9C"><span class="nav-number">1.3.</span> <span class="nav-text">解密操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Feistel%E7%BD%91%E7%BB%9C%E6%80%A7%E8%B4%A8"><span class="nav-number">1.4.</span> <span class="nav-text">Feistel网络性质</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E9%87%8DDES"><span class="nav-number">1.5.</span> <span class="nav-text">三重DES</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%8B%E9%9D%A2%E8%AE%B2%E8%AE%B2%E5%85%B7%E4%BD%93%E7%AE%97%E6%B3%95%E6%AF%8F%E4%B8%80%E6%AD%A5%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.</span> <span class="nav-text">下面讲讲具体算法每一步的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">2.0.1.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%80%83%E7%82%B9%EF%BC%9A%E7%A7%BB%E4%BD%8D"><span class="nav-number">1.</span> <span class="nav-text">考点：移位</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%89%E7%AC%A6%E5%8F%B7%E6%95%B0%EF%BC%9A"><span class="nav-number">1.1.</span> <span class="nav-text">有符号数：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A0%E7%AC%A6%E5%8F%B7%E6%95%B0%EF%BC%9A"><span class="nav-number">1.2.</span> <span class="nav-text">无符号数：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8B%93%E5%B1%95"><span class="nav-number">2.</span> <span class="nav-text">拓展</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -639,6 +736,61 @@ if (document.querySelectorAll('pre.mermaid').length) {
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
