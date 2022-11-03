@@ -20,20 +20,18 @@
     var CONFIG = {"hostname":"nexuslbh.top","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="重温DES（Data Encryption Standard）">
-<meta property="og:type" content="article">
-<meta property="og:title" content="DES算法实现——Lab">
-<meta property="og:url" content="http://nexuslbh.top/2022/04/03/DES%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94Lab/index.html">
+  <meta name="description" content="日拱一卒 功不唐捐">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Meta Field">
+<meta property="og:url" content="http://nexuslbh.top/archives/2022/11/index.html">
 <meta property="og:site_name" content="Meta Field">
-<meta property="og:description" content="重温DES（Data Encryption Standard）">
+<meta property="og:description" content="日拱一卒 功不唐捐">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-04-03T15:23:02.000Z">
-<meta property="article:modified_time" content="2022-08-28T12:56:12.414Z">
 <meta property="article:author" content="NexusXDUlbh">
-<meta property="article:tag" content="SEC">
+<meta property="article:tag" content="SEC &amp; ML">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://nexuslbh.top/2022/04/03/DES%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94Lab/">
+<link rel="canonical" href="http://nexuslbh.top/archives/2022/11/">
 
 
 <script id="page-configurations">
@@ -41,12 +39,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : true,
+    isPost : false,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>DES算法实现——Lab | Meta Field</title>
+  <title>归档 | Meta Field</title>
   
 
 
@@ -193,218 +191,59 @@
         <div class="content-wrap">
           
 
-          <div class="content post posts-expand">
+          <div class="content archive">
             
 
-    
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://nexuslbh.top/2022/04/03/DES%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94Lab/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/arch.png">
-      <meta itemprop="name" content="NexusXDUlbh">
-      <meta itemprop="description" content="<font color="#FFFFFF">日拱一卒 功不唐捐</font>">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Meta Field">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          DES算法实现——Lab
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-04-03 23:23:02" itemprop="dateCreated datePublished" datetime="2022-04-03T23:23:02+08:00">2022-04-03</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-28 20:56:12" itemprop="dateModified" datetime="2022-08-28T20:56:12+08:00">2022-08-28</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a>
-                </span>
-            </span>
-
-          
   
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2022/04/03/DES%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94Lab/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2022/04/03/DES%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94Lab/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.9k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-        <h1 id="重温DES（Data-Encryption-Standard）"><a href="#重温DES（Data-Encryption-Standard）" class="headerlink" title="重温DES（Data Encryption Standard）"></a>重温DES（<strong>Data Encryption Standard</strong>）</h1><span id="more"></span>
-<p>对称加密：使用同一把密钥，分为 流加密 、 块加密</p>
-<p>eg:</p>
-<p>流加密12345，分别加密1，2，3，4，5</p>
-<p>分组加密12345</p>
-<p>特点：</p>
-<pre><code>·加密速度快
-
-·密文可逆，一旦密钥文件泄露，数据就会暴露
-
-·加密后ASCII编码表找不到码会乱码
-
-·结合base64一起使用
-</code></pre><h2 id="DES结构"><a href="#DES结构" class="headerlink" title="DES结构"></a>DES结构</h2><p>DES也被称为Feistel网络，加密的各个步骤被称为 <strong>轮（round）</strong> ,DES是对称加密密码的代表。</p>
-<p><strong>关键思想：</strong> 将待加密信息分为两部分，如64位信息平均分为32位。</p>
-<p><strong>子密钥（subkey）：</strong> 是本轮加密使用的密钥（本轮的意思就是每一轮都需要使用一个不同的子密钥），故是局部密钥。</p>
-<p><strong>轮函数：</strong> 根据“右侧”和子密钥生成，对“左侧”进行加密的比特序列，<strong>轮函数是密码系统的核心</strong>。轮函数与左侧进行XOR运算，结果就是<strong>加密后的左侧。</strong></p>
-<h2 id="每一轮具体步骤"><a href="#每一轮具体步骤" class="headerlink" title="每一轮具体步骤"></a>每一轮具体步骤</h2><p>（1）将输入数据等分为左右两部分；</p>
-<p>（2）输入右侧直接发送到输出右侧；</p>
-<p>（3）输入右侧发送到轮函数；</p>
-<p>（4）轮函数根据右侧数据和子密钥计算出一串bit序列；</p>
-<p>（5）将（4）中的bit序列与左侧数据XOR运算，得到加密后的左侧结果。</p>
-<p><strong>但是这样一来，右侧没有被加密，因此需要用不同的子密钥对一轮处理重复若干次并在每两轮处理之间将左侧和右侧数据对调</strong>。</p>
-<p>eg：3轮加密需要进行2次左右对调，<strong>对调只在两轮之间进行，最后一轮不用对调</strong>。</p>
-<h2 id="解密操作"><a href="#解密操作" class="headerlink" title="解密操作"></a>解密操作</h2><p>将一轮加密的输出结果用相同的子密钥重新运行一次。<br>DES的解密算法与加密算法完全相同,<br>只需要将密钥的应用次序与加密时相反应用即可。</p>
-<p>即解密过程是初始置换函数IP接受长度为64比特的密文输入,将16个子密钥按照K16到K1的顺序应用与函数F的16 轮迭代运算中,然后将迭代的结果经由末置换函数I-P1得到64位的明文输出。</p>
-<h2 id="Feistel网络性质"><a href="#Feistel网络性质" class="headerlink" title="Feistel网络性质"></a>Feistel网络性质</h2><p>1.轮数可以任意增加</p>
-<p>2.加密时无论使用任何函数都可以正确解密</p>
-<p>3.加密解密可以用完全相同结构来实现</p>
-<h2 id="三重DES"><a href="#三重DES" class="headerlink" title="三重DES"></a>三重DES</h2><p>值得注意的一点是：三重DES是 <strong>加密——&gt;解密——&gt;加密</strong>的过程，而不是三次加密，这是为了让三重DES兼容普通的DES。</p>
-<p>DES最后被AES（<strong>Advanced Encryption Standard</strong>）代替了。</p>
-<h1 id="下面讲讲具体算法每一步的实现"><a href="#下面讲讲具体算法每一步的实现" class="headerlink" title="下面讲讲具体算法每一步的实现"></a>下面讲讲具体算法每一步的实现</h1><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">import com.sun.org.apache.xml.internal.security.utils.Base64;</span><br><span class="line">import javax.crypto.Cipher ;</span><br><span class="line">import javax.crypto.spec.SecretKeySpec;</span><br><span class="line"></span><br><span class="line">public class DesDemo &#123;</span><br><span class="line">    public static void main(String[] args) throws Exception &#123;</span><br><span class="line">        //原文</span><br><span class="line">        String input = &quot;实验室&quot; ;</span><br><span class="line">        //定义DES密钥key，必须是8字节</span><br><span class="line">        String key = &quot;12345678&quot; ;</span><br><span class="line">        //表示算法</span><br><span class="line">        String transformation = &quot;DES&quot; ;</span><br><span class="line">        //表示加密类型</span><br><span class="line">        String  type = &quot;DES&quot; ;</span><br><span class="line">        //创建加密对象，引入Cipher类</span><br><span class="line">        Cipher cipher = Cipher.getInstance(&quot;DES&quot;) ;</span><br><span class="line">        //创建加密规则,即生成密钥</span><br><span class="line">        //参数1表示key的字节，2表示加密类型，和算法比较像</span><br><span class="line">        SecretKeySpec secretKeySpec = new SecretKeySpec(key.getBytes(),type) ;</span><br><span class="line">        //加密初始化</span><br><span class="line">        cipher.init(Cipher.ENCRYPT_MODE,secretKeySpec);</span><br><span class="line">        //参数1表示模式，分为加密和解密模式,参数2表示加密规则</span><br><span class="line"></span><br><span class="line">        //调用加密方法,参数表示原文字节数组，传进去原文</span><br><span class="line">        byte[] bytes = cipher.doFinal(input.getBytes());</span><br><span class="line">        //直接打印密文，会直接出现乱码,编码表找不到对应字符</span><br><span class="line">        //System.out.println(new String(bytes));</span><br><span class="line">        //解决方式1：迭代</span><br><span class="line">        //for (byte aByte : bytes) &#123;</span><br><span class="line">        //  System.out.println(aByte);</span><br><span class="line">        //&#125;</span><br><span class="line">        //解决方式2：对数据进行base64编码</span><br><span class="line">        String encode = Base64.encode(bytes);</span><br><span class="line">        System.out.println(encode);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-    </div>
-
-    
-    
-    
-
-<div>
-  
-    <div>
-    
-        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
-    
-</div>
-  
-</div>
-        <div class="reward-container">
-  <div>请作者喝一杯蜜雪冰城吧！</div>
-  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-    打赏
-  </button>
-  <div id="qr" style="display: none;">
-      
-      <div style="display: inline-block;">
-        <img src="/images/wechatpay.png" alt="NexusXDUlbh 微信支付">
-        <p>微信支付</p>
+  <div class="post-block">
+    <div class="posts-collapse">
+      <div class="collection-title">
+        
+        <span class="collection-header">还行! 目前共计 48 篇日志。 继续努力。</span>
       </div>
 
-  </div>
-</div>
-
-        
-
-<div>
-<ul class="post-copyright">
-  <li class="post-copyright-author">
-    <strong>本文作者： </strong>NexusXDUlbh
-  </li>
-  <li class="post-copyright-link">
-    <strong>本文链接：</strong>
-    <a href="http://nexuslbh.top/2022/04/03/DES%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94Lab/" title="DES算法实现——Lab">http://nexuslbh.top/2022/04/03/DES算法实现——Lab/</a>
-  </li>
-  <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
-  </li>
-</ul>
-</div>
-
-
-      <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/SEC/" rel="tag"><i class="fa fa-tag"></i> SEC</a>
-          </div>
-          <script type="text/javascript">
-            var tagsall=document.getElementsByClassName("post-tags")
-            for (var i = tagsall.length - 1; i >= 0; i--){
-                var tags=tagsall[i].getElementsByTagName("a");
-                for (var j = tags.length - 1; j >= 0; j--) {
-                    var r=Math.floor(Math.random()*75+130);
-                    var g=Math.floor(Math.random()*75+100);
-                    var b=Math.floor(Math.random()*75+80);
-                    tags[j].style.background = "rgb("+r+","+g+","+b+")";
-                }
-            }                        
-          </script>
-
-        
-
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2022/04/02/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" rel="prev" title="清明">
-      <i class="fa fa-chevron-left"></i> 清明
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/2022/04/04/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB%E7%BB%BC%E8%BF%B0/" rel="next" title="文献阅读综述">
-      文献阅读综述 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      
+    <div class="collection-year">
+      <h1 class="collection-header">2022</h1>
     </div>
-      </footer>
-    
+
+  <article class="my-post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="my-post-header">
+
+      <div class="my-post-meta">
+        <time class="my-post-time" itemprop="dateCreated"
+              datetime="2022-11-03T19:27:27+08:00"
+              content="2022-11-03">
+          11-03
+        </time>
+      </div>
+
+      <h2 class="my-post-title">
+          <a class="my-post-title-link" href="/2022/11/03/DES/" itemprop="url">
+            
+              <span itemprop="name">DES</span>
+            
+          </a>
+      </h2>
+
+    </header>
   </article>
+
+
+    </div>
+  </div>
   
   
+  
+
   
 
 
 
           </div>
           
-    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -451,7 +290,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%87%8D%E6%B8%A9DES%EF%BC%88Data-Encryption-Standard%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">重温DES（Data Encryption Standard）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#DES%E7%BB%93%E6%9E%84"><span class="nav-number">1.1.</span> <span class="nav-text">DES结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AF%8F%E4%B8%80%E8%BD%AE%E5%85%B7%E4%BD%93%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.2.</span> <span class="nav-text">每一轮具体步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E5%AF%86%E6%93%8D%E4%BD%9C"><span class="nav-number">1.3.</span> <span class="nav-text">解密操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Feistel%E7%BD%91%E7%BB%9C%E6%80%A7%E8%B4%A8"><span class="nav-number">1.4.</span> <span class="nav-text">Feistel网络性质</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E9%87%8DDES"><span class="nav-number">1.5.</span> <span class="nav-text">三重DES</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%8B%E9%9D%A2%E8%AE%B2%E8%AE%B2%E5%85%B7%E4%BD%93%E7%AE%97%E6%B3%95%E6%AF%8F%E4%B8%80%E6%AD%A5%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.</span> <span class="nav-text">下面讲讲具体算法每一步的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">2.0.1.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -543,7 +381,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">244k</span>
+    <span title="站点总字数">245k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
