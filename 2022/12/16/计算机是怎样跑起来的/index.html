@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=EB Garamond, 'Noto Serif SC':300,300italic,400,400italic,700,700italic|Cinzel Decorative:300,300italic,400,400italic,700,700italic|JetBrains Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"nexuslbh.top","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="计算机是怎样跑起来的">
+<meta property="og:url" content="http://nexuslbh.top/2022/12/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%98%AF%E6%80%8E%E6%A0%B7%E8%B7%91%E8%B5%B7%E6%9D%A5%E7%9A%84/index.html">
+<meta property="og:site_name" content="Meta Field">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://nexuslbh.top/2022/12/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%98%AF%E6%80%8E%E6%A0%B7%E8%B7%91%E8%B5%B7%E6%9D%A5%E7%9A%84/mbr.png">
+<meta property="og:image" content="http://nexuslbh.top/2022/12/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%98%AF%E6%80%8E%E6%A0%B7%E8%B7%91%E8%B5%B7%E6%9D%A5%E7%9A%84/cp.png">
+<meta property="og:image" content="http://nexuslbh.top/2022/12/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%98%AF%E6%80%8E%E6%A0%B7%E8%B7%91%E8%B5%B7%E6%9D%A5%E7%9A%84/go.png">
+<meta property="og:image" content="http://nexuslbh.top/2022/12/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%98%AF%E6%80%8E%E6%A0%B7%E8%B7%91%E8%B5%B7%E6%9D%A5%E7%9A%84/in.png">
+<meta property="og:image" content="http://nexuslbh.top/2022/12/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%98%AF%E6%80%8E%E6%A0%B7%E8%B7%91%E8%B5%B7%E6%9D%A5%E7%9A%84/m1.png">
+<meta property="og:image" content="http://nexuslbh.top/2022/12/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%98%AF%E6%80%8E%E6%A0%B7%E8%B7%91%E8%B5%B7%E6%9D%A5%E7%9A%84/m2.png">
+<meta property="og:image" content="http://nexuslbh.top/2022/12/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%98%AF%E6%80%8E%E6%A0%B7%E8%B7%91%E8%B5%B7%E6%9D%A5%E7%9A%84/seg.png">
+<meta property="og:image" content="http://nexuslbh.top/2022/12/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%98%AF%E6%80%8E%E6%A0%B7%E8%B7%91%E8%B5%B7%E6%9D%A5%E7%9A%84/gdtm.png">
+<meta property="og:image" content="http://nexuslbh.top/2022/12/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%98%AF%E6%80%8E%E6%A0%B7%E8%B7%91%E8%B5%B7%E6%9D%A5%E7%9A%84/gdtr.png">
+<meta property="og:image" content="http://nexuslbh.top/2022/12/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%98%AF%E6%80%8E%E6%A0%B7%E8%B7%91%E8%B5%B7%E6%9D%A5%E7%9A%84/z1.png">
+<meta property="og:image" content="http://nexuslbh.top/2022/12/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%98%AF%E6%80%8E%E6%A0%B7%E8%B7%91%E8%B5%B7%E6%9D%A5%E7%9A%84/dxzz.png">
+<meta property="article:published_time" content="2022-12-16T13:47:36.000Z">
+<meta property="article:modified_time" content="2022-12-17T12:38:12.438Z">
+<meta property="article:author" content="NexusXDUlbh">
+<meta property="article:tag" content="ComputerSystem">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://nexuslbh.top/2022/12/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%98%AF%E6%80%8E%E6%A0%B7%E8%B7%91%E8%B5%B7%E6%9D%A5%E7%9A%84/mbr.png">
+
+<link rel="canonical" href="http://nexuslbh.top/2022/12/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%98%AF%E6%80%8E%E6%A0%B7%E8%B7%91%E8%B5%B7%E6%9D%A5%E7%9A%84/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>计算机是怎样跑起来的 | Meta Field</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/clicklove.js"></script>
+  
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+    <a target="_blank" rel="noopener" href="https://github.com/NexusXDlbh" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#70B7FD; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <script type="text/javascript">
+      console.log(window.location);
+      </script>
+
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Meta Field</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Apologize Fogive Thanks Love</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/NexusXDlbh" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://nexuslbh.top/2022/12/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%98%AF%E6%80%8E%E6%A0%B7%E8%B7%91%E8%B5%B7%E6%9D%A5%E7%9A%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/arch.png">
+      <meta itemprop="name" content="NexusXDUlbh">
+      <meta itemprop="description" content="<font color="#FFFFFF">日拱一卒 功不唐捐</font>">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Meta Field">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          计算机是怎样跑起来的
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-12-16 21:47:36" itemprop="dateCreated datePublished" datetime="2022-12-16T21:47:36+08:00">2022-12-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-12-17 20:38:12" itemprop="dateModified" datetime="2022-12-17T20:38:12+08:00">2022-12-17</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ComputerSystem/" itemprop="url" rel="index"><span itemprop="name">ComputerSystem</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2022/12/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%98%AF%E6%80%8E%E6%A0%B7%E8%B7%91%E8%B5%B7%E6%9D%A5%E7%9A%84/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/12/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%98%AF%E6%80%8E%E6%A0%B7%E8%B7%91%E8%B5%B7%E6%9D%A5%E7%9A%84/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>7.9k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>7 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.462ex" xmlns="http://www.w3.org/2000/svg" width="16.135ex" height="1.991ex" role="img" focusable="false" viewbox="0 -676 7131.6 880"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D457" d="M297 596Q297 627 318 644T361 661Q378 661 389 651T403 623Q403 595 384 576T340 557Q322 557 310 567T297 596ZM288 376Q288 405 262 405Q240 405 220 393T185 362T161 325T144 293L137 279Q135 278 121 278H107Q101 284 101 286T105 299Q126 348 164 391T252 441Q253 441 260 441T272 442Q296 441 316 432Q341 418 354 401T367 348V332L318 133Q267 -67 264 -75Q246 -125 194 -164T75 -204Q25 -204 7 -183T-12 -137Q-12 -110 7 -91T53 -71Q70 -71 82 -81T95 -112Q95 -148 63 -167Q69 -168 77 -168Q111 -168 139 -140T182 -74L193 -32Q204 11 219 72T251 197T278 308T289 365Q289 372 288 376Z"/></g><g data-mml-node="mi" transform="translate(412,0)"><path data-c="1D45A" d="M21 287Q22 293 24 303T36 341T56 388T88 425T132 442T175 435T205 417T221 395T229 376L231 369Q231 367 232 367L243 378Q303 442 384 442Q401 442 415 440T441 433T460 423T475 411T485 398T493 385T497 373T500 364T502 357L510 367Q573 442 659 442Q713 442 746 415T780 336Q780 285 742 178T704 50Q705 36 709 31T724 26Q752 26 776 56T815 138Q818 149 821 151T837 153Q857 153 857 145Q857 144 853 130Q845 101 831 73T785 17T716 -10Q669 -10 648 17T627 73Q627 92 663 193T700 345Q700 404 656 404H651Q565 404 506 303L499 291L466 157Q433 26 428 16Q415 -11 385 -11Q372 -11 364 -4T353 8T350 18Q350 29 384 161L420 307Q423 322 423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 181Q151 335 151 342Q154 357 154 369Q154 405 129 405Q107 405 92 377T69 316T57 280Q55 278 41 278H27Q21 284 21 287Z"/></g><g data-mml-node="mi" transform="translate(1290,0)"><path data-c="1D45D" d="M23 287Q24 290 25 295T30 317T40 348T55 381T75 411T101 433T134 442Q209 442 230 378L240 387Q302 442 358 442Q423 442 460 395T497 281Q497 173 421 82T249 -10Q227 -10 210 -4Q199 1 187 11T168 28L161 36Q160 35 139 -51T118 -138Q118 -144 126 -145T163 -148H188Q194 -155 194 -157T191 -175Q188 -187 185 -190T172 -194Q170 -194 161 -194T127 -193T65 -192Q-5 -192 -24 -194H-32Q-39 -187 -39 -183Q-37 -156 -26 -148H-6Q28 -147 33 -136Q36 -130 94 103T155 350Q156 355 156 364Q156 405 131 405Q109 405 94 377T71 316T59 280Q57 278 43 278H29Q23 284 23 287ZM178 102Q200 26 252 26Q282 26 310 49T356 107Q374 141 392 215T411 325V331Q411 405 350 405Q339 405 328 402T306 393T286 380T269 365T254 350T243 336T235 326L232 322Q232 321 229 308T218 264T204 212Q178 106 178 102Z"/></g><g data-mml-node="mstyle" transform="translate(1793,0)"><g data-mml-node="mspace"/></g><g data-mml-node="mn" transform="translate(2793,0)"><path data-c="30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"/></g><g data-mml-node="mo" transform="translate(3570.8,0)"><path data-c="3A" d="M78 370Q78 394 95 412T138 430Q162 430 180 414T199 371Q199 346 182 328T139 310T96 327T78 370ZM78 60Q78 84 95 102T138 120Q162 120 180 104T199 61Q199 36 182 18T139 0T96 17T78 60Z"/></g><g data-mml-node="mn" transform="translate(4126.6,0)"><path data-c="30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"/></g><g data-mml-node="mi" transform="translate(4626.6,0)"><path data-c="1D465" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"/></g><g data-mml-node="mn" transform="translate(5198.6,0)"><path data-c="37" d="M55 458Q56 460 72 567L88 674Q88 676 108 676H128V672Q128 662 143 655T195 646T364 644H485V605L417 512Q408 500 387 472T360 435T339 403T319 367T305 330T292 284T284 230T278 162T275 80Q275 66 275 52T274 28V19Q270 2 255 -10T221 -22Q210 -22 200 -19T179 0T168 40Q168 198 265 368Q285 400 349 489L395 552H302Q128 552 119 546Q113 543 108 522T98 479L95 458V455H55V458Z"/></g><g data-mml-node="mi" transform="translate(5698.6,0)"><path data-c="1D450" d="M34 159Q34 268 120 355T306 442Q362 442 394 418T427 355Q427 326 408 306T360 285Q341 285 330 295T319 325T330 359T352 380T366 386H367Q367 388 361 392T340 400T306 404Q276 404 249 390Q228 381 206 359Q162 315 142 235T121 119Q121 73 147 50Q169 26 205 26H209Q321 26 394 111Q403 121 406 121Q410 121 419 112T429 98T420 83T391 55T346 25T282 0T202 -11Q127 -11 81 37T34 159Z"/></g><g data-mml-node="mn" transform="translate(6131.6,0)"><path data-c="30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"/><path data-c="30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z" transform="translate(500,0)"/></g></g></g></svg></mjx-container></p>
+<span id="more"></span>
+<h1 id="0x00-boot的含义"><a href="#0x00-boot的含义" class="headerlink" title="0x00 boot的含义"></a>0x00 boot的含义</h1><p>先问一个问题，”启动”用英语怎么说？</p>
+<p>回答是：boot。可是，boot原来的意思是靴子，”启动”与靴子有什么关系呢？ 原来，这里的boot是bootstrap（鞋带）的缩写，它来自一句谚语：”pull oneself up by one’s bootstraps”</p>
+<p>字面意思是”<strong>拽着鞋带把自己拉起来</strong>“，这当然是不可能的事情。最早的时候，工程师们用它来比喻，计算机启动是一个很矛盾的过程：必须先运行程序，然后计算机才能启动，但是计算机不启动就无法运行程序！</p>
+<p>早期真的是这样，<strong>必须想尽各种办法，把一小段程序装进内存，然后计算机才能正常运行。</strong>所以，工程师们把这个过程叫做”拉鞋带”，久而久之就简称为boot了。</p>
+<p>计算机的整个启动过程分成 [四个阶段] 。</p>
+<h1 id="0x01-BIOS"><a href="#0x01-BIOS" class="headerlink" title="0x01 BIOS"></a>0x01 BIOS</h1><p>为了把一小段程序装入内存，ROM(<strong>R</strong>ead-<strong>O</strong>nly <strong>M</strong>emory)被发明，在ROM上的启动阶段也叫<strong>ROM Stage</strong>，在这个阶段 [<strong>没有内存</strong>] ，需要在 [<strong>ROM</strong>] 上运行代码。这时因为没有内存，没有C语言运行需要的栈空间，开始往往是<strong>汇编语言直接在ROM上运行</strong>，所以<strong>ROM Stage</strong>也是最困难的阶段。计算机通电后，第一件事情就是读取在ROM里<strong>提前</strong>写好的汇编程序，这段程序就叫<strong>BIOS</strong>。</p>
+<p>CPU运行于 <strong>[实模式]</strong> 工作环境中，数据位宽为16位，最大物理地址寻址范围是1MB，现在你按下了电源的开机键发电源信号：给CPU加电！BIOS在CPU硬件加电瞬间<strong>强行</strong>将CS值置为<code>0xFFFF</code>，IP的值置为<code>0x0000</code>，这样<strong>CS:IP</strong>就指向<strong>0xFFFF0</strong>这个地址位置，CPU跳到 <strong>0xFFFF0</strong> 处执行程序，一般情况下这里是一条跳转指令，CPU根据这个跳转指令跳到<strong>真正的BIOS入口地址</strong>执行，BIOS就开始做下面的事。</p>
+<h2 id="step1-加电自检"><a href="#step1-加电自检" class="headerlink" title="step1 加电自检"></a>step1 加电自检</h2><p>1.<strong>加电自检</strong>(POST,<strong>P</strong>ower <strong>O</strong>n <strong>S</strong>elf <strong>T</strong>est)，检测 [关键设备] 是否正常工作，如果有故障，喇叭就会叫唤。</p>
+<p>2.初始化 [显示设备] 并显示显卡信息。</p>
+<p>3.检测 [CPU和内存] 并显示检测结果。</p>
+<p>4.检测 [标准设备]，如硬盘、光驱、串口设备、并口设备等。</p>
+<p>5.检测 [即插即用设备]，并为这些设备分配 <strong>中断号、I/O端口和DMA通道</strong> 等资源。</p>
+<p>6.如果硬件配置发生变化，那么这些变化的配置将更新到 CMOS 中。</p>
+<h2 id="step2-启动顺序"><a href="#step2-启动顺序" class="headerlink" title="step2 启动顺序"></a>step2 启动顺序</h2><p>7.根据配置的<strong>启动顺序</strong>引导设备启动，通过BIOS中断将设备的引导程序读入内存。</p>
+<p>8.将处理器的控制权交给引导程序，最终引导进入操作系统。</p>
+<p>到此处CPU已经 [初始化] 并 [指向BIOS]，下一步要做的：<strong>BIOS读取MBR</strong>。</p>
+<h1 id="0x02-主引导记录-MBR"><a href="#0x02-主引导记录-MBR" class="headerlink" title="0x02 主引导记录(MBR)"></a>0x02 主引导记录(MBR)</h1><p><strong>主引导记录</strong>（Master Boot Record，缩写：MBR），又叫做<strong>主引导扇区</strong>，是计算机开机后访问硬盘时所必须要读取的<strong>首个扇区</strong>，它在硬盘上的三维地址（也叫3D参数）为（柱面<strong>C</strong>ylinders，磁头<strong>H</strong>eaders，扇区<strong>S</strong>ectors）＝（0,0,1）。主引导扇区记录着<strong>硬盘本身</strong>的相关信息以及<strong>硬盘各个分区的大小及位置信息</strong>，是数据信息的重要入口，<strong>它告诉CPU到硬盘的哪个位置去寻找操作系统。</strong></p>
+<p>BIOS按照”启动顺序”，把控制权转交给排在第一位的硬盘。</p>
+<p>这时，<strong>BIOS</strong>读取该硬盘的第一个扇区（主引导扇区），也就是读取<strong>最前面的512个字节</strong>。如果这512个字节的最后两个字节是<strong>0x55</strong>和<strong>0xAA</strong>，表明这个设备可以用于启动；如果不是，表明设备不能用于启动，控制权于是被转交给”启动顺序”中的下一个设备。</p>
+<p>👋对于硬盘而言，一个扇区可能的字节数为<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex" xmlns="http://www.w3.org/2000/svg" width="22.116ex" height="2.262ex" role="img" focusable="false" viewbox="0 -750 9775.3 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mn"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"/><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z" transform="translate(500,0)"/><path data-c="38" d="M70 417T70 494T124 618T248 666Q319 666 374 624T429 515Q429 485 418 459T392 417T361 389T335 371T324 363L338 354Q352 344 366 334T382 323Q457 264 457 174Q457 95 399 37T249 -22Q159 -22 101 29T43 155Q43 263 172 335L154 348Q133 361 127 368Q70 417 70 494ZM286 386L292 390Q298 394 301 396T311 403T323 413T334 425T345 438T355 454T364 471T369 491T371 513Q371 556 342 586T275 624Q268 625 242 625Q201 625 165 599T128 534Q128 511 141 492T167 463T217 431Q224 426 228 424L286 386ZM250 21Q308 21 350 55T392 137Q392 154 387 169T375 194T353 216T330 234T301 253T274 270Q260 279 244 289T218 306L210 311Q204 311 181 294T133 239T107 157Q107 98 150 60T250 21Z" transform="translate(1000,0)"/></g><g data-mml-node="mo" transform="translate(1722.2,0)"><path data-c="D7" d="M630 29Q630 9 609 9Q604 9 587 25T493 118L389 222L284 117Q178 13 175 11Q171 9 168 9Q160 9 154 15T147 29Q147 36 161 51T255 146L359 250L255 354Q174 435 161 449T147 471Q147 480 153 485T168 490Q173 490 175 489Q178 487 284 383L389 278L493 382Q570 459 587 475T609 491Q630 491 630 471Q630 464 620 453T522 355L418 250L522 145Q606 61 618 48T630 29Z"/></g><g data-mml-node="msup" transform="translate(2722.4,0)"><g data-mml-node="mn"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"/></g><g data-mml-node="mi" transform="translate(533,363) scale(0.707)"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"/></g></g><g data-mml-node="mo" transform="translate(3729.7,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"/></g><g data-mml-node="mi" transform="translate(4118.7,0)"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"/></g><g data-mml-node="mo" transform="translate(4996.5,0)"><path data-c="3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"/></g><g data-mml-node="mn" transform="translate(6052.3,0)"><path data-c="30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"/></g><g data-mml-node="mo" transform="translate(6552.3,0)"><path data-c="2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"/></g><g data-mml-node="mn" transform="translate(6996.9,0)"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"/></g><g data-mml-node="mo" transform="translate(7496.9,0)"><path data-c="2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"/></g><g data-mml-node="mn" transform="translate(7941.6,0)"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"/></g><g data-mml-node="mo" transform="translate(8441.6,0)"><path data-c="2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"/></g><g data-mml-node="mn" transform="translate(8886.3,0)"><path data-c="33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"/></g><g data-mml-node="mo" transform="translate(9386.3,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"/></g></g></g></svg></mjx-container>。大多数情况下取2，即一个扇区（sector）的大小为512字节。</p>
+<p>在使用“主引导记录”（MBR）这个术语的时候，需要根据具体情况判断其到底是指<strong>整个主引导扇区</strong>，还是<strong>主引导扇区的前446字节</strong>。</p>
+<blockquote>
+<p>The MBR is stored on the first sector of the hard disk and is created along with the first partition on the drive. <strong>It is loaded into memory as one of the first actions during system start up.</strong> </p>
+<p><a target="_blank" rel="noopener" href="https://www.sciencedirect.com/topics/computer-science/master-boot-record">Master Boot Record</a> </p>
+<p>David Day, in <a target="_blank" rel="noopener" href="https://www.sciencedirect.com/book/9780128007433/cyber-crime-and-cyber-terrorism-investigators-handbook">Cyber Crime and Cyber Terrorism Investigator’s Handbook</a>, 2014</p>
+</blockquote>
+<p><img src="/2022/12/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%98%AF%E6%80%8E%E6%A0%B7%E8%B7%91%E8%B5%B7%E6%9D%A5%E7%9A%84/mbr.png" style="zoom:67%;"></p>
+<h2 id="2-1-MBR结构"><a href="#2-1-MBR结构" class="headerlink" title="2.1 MBR结构"></a>2.1 MBR结构</h2><h3 id="2-1-1启动代码（调用OS的机器码）"><a href="#2-1-1启动代码（调用OS的机器码）" class="headerlink" title="2.1.1启动代码（调用OS的机器码）"></a>2.1.1启动代码（调用OS的机器码）</h3><p><code>linux0.11</code>最开始的代码<code>bootsect.s</code>编译为二进制文件后存放在启动区第一扇区（MBR），然后由BIOS搬运至内存的<code>0x7c00</code>位置，CPU也从此处开始不断往后一条一条指令执行。下面贴一小段<a target="_blank" rel="noopener" href="https://github.com/karottc/linux-0.11/blob/master/boot/bootsect.s">源代码</a>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">SETUPLEN = 4				! nr of setup-sectors</span><br><span class="line">BOOTSEG  = 0x07c0			! original address of boot-sector</span><br><span class="line">INITSEG  = 0x9000			! we move boot here - out of the way</span><br><span class="line">SETUPSEG = 0x9020			! setup starts here</span><br><span class="line">SYSSEG   = 0x1000			! system loaded at 0x10000 (65536).</span><br><span class="line">ENDSEG   = SYSSEG + SYSSIZE		! where to stop loading</span><br><span class="line"></span><br><span class="line">! ROOT_DEV:	0x000 - same type of floppy as boot.</span><br><span class="line">!		0x301 - first partition on first drive etc</span><br><span class="line">ROOT_DEV = 0x306</span><br><span class="line"></span><br><span class="line">entry _start</span><br><span class="line">_start:</span><br><span class="line">	mov	ax,#BOOTSEG</span><br><span class="line">	mov	ds,ax</span><br><span class="line">	mov	ax,#INITSEG</span><br><span class="line">	mov	es,ax</span><br><span class="line">	mov	cx,#256</span><br><span class="line">	sub	si,si</span><br><span class="line">	sub	di,di</span><br><span class="line">	rep</span><br><span class="line">	movw</span><br></pre></td></tr></table></figure>
+<h3 id="2-1-2分区表-Partition-Table"><a href="#2-1-2分区表-Partition-Table" class="headerlink" title="2.1.2分区表(Partition Table)"></a>2.1.2分区表(Partition Table)</h3><p>分区表的长度只有64个字节，里面又分成四项，每项16个字节。所以，一个硬盘最多划分<strong>四个</strong>一级分区，又叫做<strong>“主分区”</strong>。一个主分区的扇区总数最多不超过<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: 0" xmlns="http://www.w3.org/2000/svg" width="2.919ex" height="1.887ex" role="img" focusable="false" viewbox="0 -833.9 1290.1 833.9"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msup"><g data-mml-node="mn"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"/></g><g data-mml-node="TeXAtom" transform="translate(533,363) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mn"><path data-c="33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"/><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z" transform="translate(500,0)"/></g></g></g></g></g></svg></mjx-container>。</p>
+<h3 id="2-1-3主引导记录签名"><a href="#2-1-3主引导记录签名" class="headerlink" title="2.1.3主引导记录签名"></a>2.1.3主引导记录签名</h3><p>系统在对硬盘做初始化时写入的一个标签，它是MBR不可或缺的一个组成部分。系统依靠这个签名来识别硬盘，如果硬盘的签名丢失，系统就会认为该硬盘没有初始化。<strong>0x55</strong>和<strong>0xAA</strong>就是签名。</p>
+<p>现在BIOS已经把MBR的512字节都装入内存了，执行完BIOS整个代码后，要做的事情是：将控制权交给硬盘的某个分区。</p>
+<h2 id="2-2-linux-0-11源码讲解"><a href="#2-2-linux-0-11源码讲解" class="headerlink" title="2.2 linux_0.11源码讲解"></a>2.2 linux_0.11源码讲解</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">entry _start</span><br><span class="line">_start:</span><br><span class="line">	mov	ax,#BOOTSEG</span><br><span class="line">	mov	ds,ax</span><br><span class="line">	mov	ax,#INITSEG</span><br><span class="line">	mov	es,ax</span><br></pre></td></tr></table></figure>
+<p>硬盘第一扇区也就是MBR加载进入内存后，要将内存地址<code>0x7c00</code>处开始往后512字节的数据原封不动复制到内存的<code>0x90000</code>地址处。</p>
+<p><img src="/2022/12/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%98%AF%E6%80%8E%E6%A0%B7%E8%B7%91%E8%B5%B7%E6%9D%A5%E7%9A%84/cp.png" style="zoom: 67%;"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mov cx,#256</span><br><span class="line">sub si,si</span><br><span class="line">sub di,di</span><br><span class="line">rep movw ;重复执行movw指令256次</span><br></pre></td></tr></table></figure>
+<p>现在，操作系统最开头的代码，已经被挪到了 <strong>0x90000</strong> 这个位置了。</p>
+<p>再往后是一个<strong>跳转</strong>指令。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">jmpi go,0x9000  ;跳转到 0x90000 + go 这个内存地址处执行</span><br><span class="line">go: 			;go标签编译为机器码，是一个值，是go在文件内的偏移地址</span><br><span class="line">  mov ax,cs		;0x90000 + go刚好是这句代码所在的内存地址</span><br><span class="line">  mov ds,ax</span><br><span class="line">  mov es,ax</span><br><span class="line">  mov ss,ax</span><br><span class="line">  mov sp,#0xFF00</span><br></pre></td></tr></table></figure>
+<p><img src="/2022/12/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%98%AF%E6%80%8E%E6%A0%B7%E8%B7%91%E8%B5%B7%E6%9D%A5%E7%9A%84/go.png" style="zoom:67%;"></p>
+<p><strong>数据段寄存器 ds和代码段寄存器 cs</strong> 此时都被设置为了 0x9000，也就为跳转代码和访问内存数据，奠定了同一个内存的基址地址，因为仅仅需要指定偏移地址，方便了跳转和内存访问。</p>
+<p>栈顶地址被设置为了 0x9FF00，具体表现为<strong>栈段寄存器 ss</strong> 为 0x9000，<strong>栈基址寄存器 sp</strong> 为 0xFF00。栈是向下发展的，这个栈顶地址 0x9FF00 要远远大于此时代码所在的位置 0x90000，所以栈向下发展就很难撞见代码所在的位置，也就比较安全。</p>
+<p>现在在做的事情，就是给如何访问代码，如何访问数据，如何访问栈进行了一下<strong>内存的初步规划</strong>。其中访问代码和访问数据的规划方式就是设置了一个<strong>基址</strong>而已，访问栈就是把<strong>栈顶指针</strong>指向了一个远离代码位置的地方而已。</p>
+<p>下面要做的就是把磁盘中其余部分也拿到内存来，即：硬盘载入。</p>
+<h1 id="0x03-硬盘载入"><a href="#0x03-硬盘载入" class="headerlink" title="0x03 硬盘载入"></a>0x03 硬盘载入</h1><p>根据分区，讨论3种情况：</p>
+<h2 id="3-1-启动管理器-boot-loader"><a href="#3-1-启动管理器-boot-loader" class="headerlink" title="3.1 启动管理器(boot loader)"></a>3.1 启动管理器(boot loader)</h2><p>计算机读取MBR前446字节的机器码后，不再把控制权转交给某一个分区，而是运行事先安装的启动管理器，由用户选择启动哪个OS。Linux环境中，目前最流行的启动管理器是<code>Grub</code>。</p>
+<h2 id="3-2-卷引导记录-Volume-boot-record"><a href="#3-2-卷引导记录-Volume-boot-record" class="headerlink" title="3.2 卷引导记录(Volume boot record)"></a>3.2 卷引导记录(Volume boot record)</h2><p>计算机四个主分区里面只有一个是<strong>激活</strong>的，计算机会读取激活分区的第一个扇区，叫做“卷引导记录”(Volume boot record)，缩写为VBR。</p>
+<p>VBR主要作用是：告诉计算机，操作系统在这个分区里的位置。然后，计算机就会加载操作系统了。</p>
+<h2 id="3-3-拓展分区"><a href="#3-3-拓展分区" class="headerlink" title="3.3 拓展分区"></a>3.3 拓展分区</h2><p>很少以拓展分区方式来启动OS。</p>
+<p>如果有拓展分区，一般也用<code>boot loader</code>方式启动。</p>
+<h2 id="3-4-linux-0-11源码讲解"><a href="#3-4-linux-0-11源码讲解" class="headerlink" title="3.4 linux_0.11源码讲解"></a>3.4 linux_0.11源码讲解</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">load_setup:</span><br><span class="line">    mov dx,#0x0000      ; drive 0, head 0</span><br><span class="line">    mov cx,#0x0002      ; sector 2, track 0</span><br><span class="line">    mov bx,#0x0200      ; address = 512, in 0x9000</span><br><span class="line">    mov ax,#0x0200+4    ; service 2, nr of sectors</span><br><span class="line">    int 0x13            ; read it</span><br><span class="line">    jnc ok_load_setup       ; ok - continue</span><br><span class="line">    mov dx,#0x0000</span><br><span class="line">    mov ax,#0x0000      ; reset the diskette</span><br><span class="line">    int 0x13</span><br><span class="line">    jmp load_setup</span><br><span class="line"></span><br><span class="line">ok_load_setup:</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+<p><strong>int 0x13</strong>：发起0x13号中断，上面的<strong>通用寄存器ax,bx,cx,dx</strong>都是这个中断指令的参数。</p>
+<p>用途：将指定<strong>扇区</strong>的代码加载到<strong>内存</strong>的指定位置，它可以完成磁盘(包括硬盘和软盘)的复位,  读写,  校验,  定位,  诊断,  格式化等功能。int 0x13采用的就是CHS寻址方式（柱面<strong>C</strong>ylinders，磁头<strong>H</strong>eaders，扇区<strong>S</strong>ectors），因此最大识能访问<strong>8 GB</strong>左右的硬盘。</p>
+<p>上面代码的作用是：</p>
+<p><strong>将硬盘的第 2 个扇区开始，把数据加载到内存 0x90200 处，共加载 4 个扇区</strong>。</p>
+<p><img src="/2022/12/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%98%AF%E6%80%8E%E6%A0%B7%E8%B7%91%E8%B5%B7%E6%9D%A5%E7%9A%84/in.png" style="zoom:67%;"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ok_load_setup:</span><br><span class="line">    ...</span><br><span class="line">    mov ax,#0x1000</span><br><span class="line">    mov es,ax       ; segment of 0x10000</span><br><span class="line">    call read_it</span><br><span class="line">    ...</span><br><span class="line">    jmpi 0,0x9020</span><br></pre></td></tr></table></figure>
+<p>这段代码作用是<strong>把从硬盘第 6 个扇区开始往后的 240 个扇区，加载到内存 0x10000 处</strong>。至此，整个操作系统的<strong>全部代码</strong>，就已经全部从硬盘中，被搬迁到内存来了。</p>
+<p><img src="/2022/12/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%98%AF%E6%80%8E%E6%A0%B7%E8%B7%91%E8%B5%B7%E6%9D%A5%E7%9A%84/m1.png" style="zoom:67%;"></p>
+<p>下面是最后一次折腾内存，我们这部分不用细究代码，知道最后的结果就可以。整个OS的编译过程，是通过<strong>Makefile</strong>和<strong>build.c</strong>配合完成的，最终结果是：</p>
+<p><strong><em>1.</em></strong> 把 bootsect.s 编译成 bootsect 放在硬盘的 1 扇区。</p>
+<p><strong><em>2.</em></strong> 把 setup.s 编译成 setup 放在硬盘的 2~5 扇区。</p>
+<p><strong><em>3.</em></strong> 把剩下的全部代码（head.s 作为开头）编译成 system 放在硬盘的随后 240 个扇区。</p>
+<p><img src="/2022/12/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%98%AF%E6%80%8E%E6%A0%B7%E8%B7%91%E8%B5%B7%E6%9D%A5%E7%9A%84/m2.png"></p>
+<p>下面依次进行：实模式转为保护模式、分页机制，再跳转到内核。</p>
+<p>实模式：8086（微机原理）。后面8086发展到了80286，此时址总线已有24根，但是<strong>在实模式下</strong>，为了向下兼容，系统表现的行为又应同8086一样，即仿佛“只有20根地址总线”。为了能够自由选择<strong>实模式下</strong>寻址能力的大小，便出现了A20 Gate。</p>
+<p>A20 Gate是第21根地址总线，它有一个开关，保护模式下打开，突破地址信号线 20 位的宽度，变成 32 位可用。</p>
+<p>为了从实模式转为保护模式，OS设置全局描述符表<strong>GDT</strong>。段值存入段寄存器，而该值作为索引，用于在<strong>GDT</strong>（<strong>G</strong>lobal <strong>D</strong>escriptor <strong>T</strong>able）中寻找到对应的一个表项（段描述符），该表项中含有段地址、段大小、访问控制等信息，得到其中的段地址后再加上合法的段内偏移，即可访问到对应的物理地址。</p>
+<p>总结就是：保护模式下寻址方式为</p>
+<script type="math/tex; mode=display">
+物理地址 = GDT对应表项中的段地址 + 合法偏移地址</script><p><strong>GDT的本质就是个规定好格式的数据结构而已。</strong></p>
+<p>✍GDT存在的意义：</p>
+<blockquote>
+<p><strong>全局描述符表GDT（Global Descriptor Table）</strong>在整个系统中，全局描述符表GDT只有一张(一个处理器对应一个GDT)，GDT可以被放在内存的任何位置，但CPU必须知道GDT的入口，也就是基地址放在哪里，Intel的设计者门提供了一个<strong>寄存器GDTR</strong>用来存放GDT的入口地址，程序员将GDT设定在内存中某个位置之后，可以通过<strong>LGDT指令</strong>将GDT的入口地址装入此寄存器，从此以后，CPU就根据此寄存器中的内容作为GDT的入口来访问GDT了。GDTR中存放的是GDT在内存中的基地址和其表长界限。</p>
+<p>80286之前处理器只有实模式，GDT是提供内存保护，限制非法访问内存的一种方式。</p>
+</blockquote>
+<p><img src="/2022/12/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%98%AF%E6%80%8E%E6%A0%B7%E8%B7%91%E8%B5%B7%E6%9D%A5%E7%9A%84/seg.png" style="zoom:67%;"></p>
+<p>保护模式下，物理地址并不是直接暴露在程序员面前了，寻址有了更多的检查步骤，这是属于虚拟内存的范畴了，在此就不再深入。</p>
+<p>此时内存是这样：</p>
+<p><img src="/2022/12/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%98%AF%E6%80%8E%E6%A0%B7%E8%B7%91%E8%B5%B7%E6%9D%A5%E7%9A%84/gdtm.png" style="zoom:67%;"></p>
+<p>其中GDTR寄存器存储了GDT结构，即：<strong>GDT description structure</strong></p>
+<p>GDT description structure描述了GDT的位置及大小（并非GDT的一部分）。</p>
+<p>可通过LGDTR指令从内存中往GDTR中加载GDT description structure。</p>
+<p>GDTR寄存器：</p>
+<p><img src="/2022/12/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%98%AF%E6%80%8E%E6%A0%B7%E8%B7%91%E8%B5%B7%E6%9D%A5%E7%9A%84/gdtr.png" alt></p>
+<p>在处理器刚上电的时候，基地址默认为0，表界限默认为0xFFFF; 在保护模式初始化过程中，必须给GDTR加载一个新值。</p>
+<p>首先配置全局描述符表 gdt 和中断描述符表 idt：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lidt  idt_48</span><br><span class="line">lgdt  gdt_48</span><br></pre></td></tr></table></figure>
+<p>现在的代码仍然是setup.s中的：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mov al,#0xD1        ; command write</span><br><span class="line">out #0x64,al</span><br><span class="line">mov al,#0xDF        ; A20 on</span><br><span class="line">out #0x60,al</span><br></pre></td></tr></table></figure>
+<p>这段代码的意思是，<strong>打开 A20 地址线</strong>。</p>
+<p>下面有一大坨是专门对8259芯片的编程，微机原理讲过8259，去复习一下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">; well, that went ok, I hope. Now we have to reprogram the interrupts :-(</span><br><span class="line">; we put them right after the intel-reserved hardware interrupts, at</span><br><span class="line">; int 0x20-0x2F. There they won't mess up anything. Sadly IBM really</span><br><span class="line">; messed this up with the original PC, and they haven't been able to</span><br><span class="line">; rectify it afterwards. Thus the bios puts interrupts at 0x08-0x0f,</span><br><span class="line">; which is used for the internal hardware interrupts as well. We just</span><br><span class="line">; have to reprogram the 8259's, and it isn't fun.</span><br><span class="line"></span><br><span class="line">    mov al,#0x11        ; initialization sequence</span><br><span class="line">    out #0x20,al        ; send it to 8259A-1</span><br><span class="line">    .word   0x00eb,0x00eb       ; jmp $+2, jmp $+2</span><br><span class="line">    out #0xA0,al        ; and to 8259A-2</span><br><span class="line">    .word   0x00eb,0x00eb</span><br><span class="line">    mov al,#0x20        ; start of hardware int's (0x20)</span><br><span class="line">    out #0x21,al</span><br><span class="line">    .word   0x00eb,0x00eb</span><br><span class="line">    mov al,#0x28        ; start of hardware int's 2 (0x28)</span><br><span class="line">    out #0xA1,al</span><br><span class="line">    .word   0x00eb,0x00eb</span><br><span class="line">    mov al,#0x04        ; 8259-1 is master</span><br><span class="line">    out #0x21,al</span><br><span class="line">    .word   0x00eb,0x00eb</span><br><span class="line">    mov al,#0x02        ; 8259-2 is slave</span><br><span class="line">    out #0xA1,al</span><br><span class="line">    .word   0x00eb,0x00eb</span><br><span class="line">    mov al,#0x01        ; 8086 mode for both</span><br><span class="line">    out #0x21,al</span><br><span class="line">    .word   0x00eb,0x00eb</span><br><span class="line">    out #0xA1,al</span><br><span class="line">    .word   0x00eb,0x00eb</span><br><span class="line">    mov al,#0xFF        ; mask off all interrupts for now</span><br><span class="line">    out #0x21,al</span><br><span class="line">    .word   0x00eb,0x00eb</span><br><span class="line">    out #0xA1,al</span><br></pre></td></tr></table></figure>
+<p>接下来的一步，就是<strong>真正切换模式</strong>的一步了，从代码上看就两行。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mov ax,#0x0001  ; protected mode (PE) bit</span><br><span class="line">lmsw ax      ; This is it;</span><br><span class="line">jmpi 0,8     ; jmp offset 0 of segment 8 (cs)</span><br></pre></td></tr></table></figure>
+<p>前两行，将 cr0 这个寄存器的位 0 置 1，模式就从<strong>实模式切换到保护模式</strong>了。</p>
+<p><img src="/2022/12/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%98%AF%E6%80%8E%E6%A0%B7%E8%B7%91%E8%B5%B7%E6%9D%A5%E7%9A%84/z1.png" alt></p>
+<p>跳转指令 <strong>jmpi</strong>，后面的 8 表示 cs（代码段寄存器）的值，0 表示偏移地址。请注意，此时已经是保护模式了，之前也说过，保护模式下内存寻址方式变了，<strong>段寄存器里的值被当做段选择子</strong>。</p>
+<p>8 用二进制表示是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0000,0000,0000,1000</span><br></pre></td></tr></table></figure>
+<p><img src="/2022/12/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%98%AF%E6%80%8E%E6%A0%B7%E8%B7%91%E8%B5%B7%E6%9D%A5%E7%9A%84/dxzz.png" alt></p>
+<p>可以知道<strong>描述符索引值是 1</strong>，也就是要去<strong>全局描述符表（gdt）</strong>中找第1项段描述符。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">gdt:</span><br><span class="line">    .word   0,0,0,0     ; dummy</span><br><span class="line"></span><br><span class="line">    .word   0x07FF      ; 8Mb - limit=2047 (2048*4096=8Mb)</span><br><span class="line">    .word   0x0000      ; base address=0</span><br><span class="line">    .word   0x9A00      ; code read/exec</span><br><span class="line">    .word   0x00C0      ; granularity=4096, 386</span><br><span class="line"></span><br><span class="line">    .word   0x07FF      ; 8Mb - limit=2047 (2048*4096=8Mb)</span><br><span class="line">    .word   0x0000      ; base address=0</span><br><span class="line">    .word   0x9200      ; data read/write</span><br><span class="line">    .word   0x00C0      ; granularity=4096, 386</span><br></pre></td></tr></table></figure>
+<p>第 0 项是空值，第一项被表示为<strong>代码段描述符</strong>，是个可读可执行的段，第二项为<strong>数据段描述符</strong>，是个可读可写段，不过他们的<strong>段基址都是 0。</strong></p>
+<p>所以，这里取的就是这个代码段描述符，<strong>段基址是 0</strong>，偏移也是 0，那加一块就还是 0 咯，所以最终这个跳转指令，就是跳转到内存地址的 0 地址处，开始执行。</p>
+<p>0地址处就是操作系统全部代码的 system 这个大模块，system 模块怎么生成的呢？由 Makefile 文件可知，是由 head.s 和 main.c 以及其余各模块的操作系统代码编译并链接在一起而成的，可以理解为操作系统的全部核心代码编译后的结果。启动模块最后还剩一个文件：header.s，文件比较短。</p>
+<h1 id="0x04-OS内核载入"><a href="#0x04-OS内核载入" class="headerlink" title="0x04 OS内核载入"></a>0x04 OS内核载入</h1><p>控制权转交给操作系统后，操作系统的内核首先被载入内存。以Linux系统为例，先载入<code>/boot</code>目录下面的<strong>kernel</strong>。内核加载成功后，第一个运行的程序是<code>/sbin/init</code>。它根据配置文件（Debian系统是<code>/etc/initab</code>）产生init进程。这是Linux启动后的第一个进程，pid进程编号为1，其他进程都是它的后代。</p>
+<p>然后，init线程加载系统的各个模块，比如窗口程序和网络程序，直至执行<code>/bin/login</code>程序，跳出登录界面，等待用户输入用户名和密码。</p>
+<p>至此，全部启动过程完成。</p>
+<h1 id="附录-参考资料"><a href="#附录-参考资料" class="headerlink" title="附录 参考资料"></a>附录 参考资料</h1><p><a target="_blank" rel="noopener" href="https://www.wikiwand.com/zh-sg/%E4%B8%BB%E5%BC%95%E5%AF%BC%E8%AE%B0%E5%BD%95">主引导记录</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.sciencedirect.com/topics/computer-science/master-boot-record">Master Boot Record</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/sunym1993/flash-linux0.11-talk">你管这破玩意叫操作系统源码 — 像小说一样品读 Linux 0.11 核心代码</a></p>
+
+    </div>
+
+    
+    
+    
+
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+  
+</div>
+        <div class="reward-container">
+  <div>请作者喝一杯蜜雪冰城吧！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="NexusXDUlbh 微信支付">
+        <p>微信支付</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>NexusXDUlbh
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://nexuslbh.top/2022/12/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%98%AF%E6%80%8E%E6%A0%B7%E8%B7%91%E8%B5%B7%E6%9D%A5%E7%9A%84/" title="计算机是怎样跑起来的">http://nexuslbh.top/2022/12/16/计算机是怎样跑起来的/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ComputerSystem/" rel="tag"><i class="fa fa-tag"></i> ComputerSystem</a>
+          </div>
+          <script type="text/javascript">
+            var tagsall=document.getElementsByClassName("post-tags")
+            for (var i = tagsall.length - 1; i >= 0; i--){
+                var tags=tagsall[i].getElementsByTagName("a");
+                for (var j = tags.length - 1; j >= 0; j--) {
+                    var r=Math.floor(Math.random()*75+130);
+                    var g=Math.floor(Math.random()*75+100);
+                    var b=Math.floor(Math.random()*75+80);
+                    tags[j].style.background = "rgb("+r+","+g+","+b+")";
+                }
+            }                        
+          </script>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/12/11/%E8%B0%88%E8%B0%88BIOS/" rel="prev" title="谈谈BIOS">
+      <i class="fa fa-chevron-left"></i> 谈谈BIOS
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0x00-boot%E7%9A%84%E5%90%AB%E4%B9%89"><span class="nav-number">1.</span> <span class="nav-text">0x00 boot的含义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#0x01-BIOS"><span class="nav-number">2.</span> <span class="nav-text">0x01 BIOS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#step1-%E5%8A%A0%E7%94%B5%E8%87%AA%E6%A3%80"><span class="nav-number">2.1.</span> <span class="nav-text">step1 加电自检</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#step2-%E5%90%AF%E5%8A%A8%E9%A1%BA%E5%BA%8F"><span class="nav-number">2.2.</span> <span class="nav-text">step2 启动顺序</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#0x02-%E4%B8%BB%E5%BC%95%E5%AF%BC%E8%AE%B0%E5%BD%95-MBR"><span class="nav-number">3.</span> <span class="nav-text">0x02 主引导记录(MBR)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-MBR%E7%BB%93%E6%9E%84"><span class="nav-number">3.1.</span> <span class="nav-text">2.1 MBR结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-1%E5%90%AF%E5%8A%A8%E4%BB%A3%E7%A0%81%EF%BC%88%E8%B0%83%E7%94%A8OS%E7%9A%84%E6%9C%BA%E5%99%A8%E7%A0%81%EF%BC%89"><span class="nav-number">3.1.1.</span> <span class="nav-text">2.1.1启动代码（调用OS的机器码）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-2%E5%88%86%E5%8C%BA%E8%A1%A8-Partition-Table"><span class="nav-number">3.1.2.</span> <span class="nav-text">2.1.2分区表(Partition Table)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-3%E4%B8%BB%E5%BC%95%E5%AF%BC%E8%AE%B0%E5%BD%95%E7%AD%BE%E5%90%8D"><span class="nav-number">3.1.3.</span> <span class="nav-text">2.1.3主引导记录签名</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-linux-0-11%E6%BA%90%E7%A0%81%E8%AE%B2%E8%A7%A3"><span class="nav-number">3.2.</span> <span class="nav-text">2.2 linux_0.11源码讲解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#0x03-%E7%A1%AC%E7%9B%98%E8%BD%BD%E5%85%A5"><span class="nav-number">4.</span> <span class="nav-text">0x03 硬盘载入</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-%E5%90%AF%E5%8A%A8%E7%AE%A1%E7%90%86%E5%99%A8-boot-loader"><span class="nav-number">4.1.</span> <span class="nav-text">3.1 启动管理器(boot loader)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-%E5%8D%B7%E5%BC%95%E5%AF%BC%E8%AE%B0%E5%BD%95-Volume-boot-record"><span class="nav-number">4.2.</span> <span class="nav-text">3.2 卷引导记录(Volume boot record)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-%E6%8B%93%E5%B1%95%E5%88%86%E5%8C%BA"><span class="nav-number">4.3.</span> <span class="nav-text">3.3 拓展分区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-4-linux-0-11%E6%BA%90%E7%A0%81%E8%AE%B2%E8%A7%A3"><span class="nav-number">4.4.</span> <span class="nav-text">3.4 linux_0.11源码讲解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#0x04-OS%E5%86%85%E6%A0%B8%E8%BD%BD%E5%85%A5"><span class="nav-number">5.</span> <span class="nav-text">0x04 OS内核载入</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%99%84%E5%BD%95-%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">6.</span> <span class="nav-text">附录 参考资料</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="NexusXDUlbh"
+      src="/images/arch.png">
+  <p class="site-author-name" itemprop="name">NexusXDUlbh</p>
+  <div class="site-description" itemprop="description"><font color="#FFFFFF">日拱一卒 功不唐捐</font></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">50</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/NexusXDlbh" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;NexusXDlbh" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:3321861647@qq.com" title="E-Mail → mailto:3321861647@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/NexusLbh" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;NexusLbh" rel="noopener" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>StackOverflow</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+      
+      
+      <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+      <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+      <div class="widget-wrap">
+          <h4 class="widget-title" style="font-size:20px;text-align:center;color:#0080FF;margin:20px 0 0px;">Tag Cloud</h4>
+          <div id="myCanvasContainer" class="widget tagcloud" style="font-size:20px;">
+              <canvas width="220" height="200" id="resCanvas" style="width=100%">
+                  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSAPP/" rel="tag">CSAPP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSer/" rel="tag">CSer</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ComputerSystem/" rel="tag">ComputerSystem</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DataBase/" rel="tag">DataBase</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ML/" rel="tag">ML</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Math/" rel="tag">Math</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SEC/" rel="tag">SEC</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Search/" rel="tag">Search</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/University/" rel="tag">University</a><span class="tag-list-count">4</span></li></ul>
+              </canvas>
+          </div>
+      </div>
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">NexusXDUlbh</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">273k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">4:08</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+<script>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'NLtLmA6YQidughGHtg1RBkvk-gzGzoHsz',
+      appKey     : 'VdYpKRx5SPqTdAIEf3XpsmAp',
+      placeholder: "Just go go",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
+
